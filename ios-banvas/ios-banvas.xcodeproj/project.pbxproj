@@ -26,6 +26,8 @@
 		CE628384165F9E4E00BD975E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE628354165F9E4D00BD975E /* Foundation.framework */; };
 		CE62838C165F9E4E00BD975E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE62838A165F9E4E00BD975E /* InfoPlist.strings */; };
 		CE62838F165F9E4E00BD975E /* ios_banvasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62838E165F9E4E00BD975E /* ios_banvasTests.m */; };
+		DF0497FB165FAF7A0047262E /* BADataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0497FA165FAF7A0047262E /* BADataSource.m */; };
+		DF049803165FBFCC0047262E /* personData.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF049802165FBFCC0047262E /* personData.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,9 @@
 		CE62838B165F9E4E00BD975E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE62838D165F9E4E00BD975E /* ios_banvasTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_banvasTests.h; sourceTree = "<group>"; };
 		CE62838E165F9E4E00BD975E /* ios_banvasTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_banvasTests.m; sourceTree = "<group>"; };
+		DF0497F9165FAF7A0047262E /* BADataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BADataSource.h; sourceTree = "<group>"; };
+		DF0497FA165FAF7A0047262E /* BADataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BADataSource.m; sourceTree = "<group>"; };
+		DF049802165FBFCC0047262E /* personData.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = personData.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +127,8 @@
 		CE628358165F9E4D00BD975E /* ios-banvas */ = {
 			isa = PBXGroup;
 			children = (
+				DF049800165FBF720047262E /* images */,
+				DF0497F7165FAF540047262E /* DataSource */,
 				CE628361165F9E4D00BD975E /* BAAppDelegate.h */,
 				CE628362165F9E4D00BD975E /* BAAppDelegate.m */,
 				CE62836A165F9E4E00BD975E /* MainStoryboard.storyboard */,
@@ -165,6 +172,23 @@
 				CE62838A165F9E4E00BD975E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF0497F7165FAF540047262E /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				DF0497F9165FAF7A0047262E /* BADataSource.h */,
+				DF0497FA165FAF7A0047262E /* BADataSource.m */,
+				DF049802165FBFCC0047262E /* personData.strings */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		DF049800165FBF720047262E /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +272,7 @@
 				CE628373165F9E4E00BD975E /* first@2x.png in Resources */,
 				CE628378165F9E4E00BD975E /* second.png in Resources */,
 				CE62837A165F9E4E00BD975E /* second@2x.png in Resources */,
+				DF049803165FBFCC0047262E /* personData.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +309,7 @@
 			files = (
 				CE62835F165F9E4D00BD975E /* main.m in Sources */,
 				CE628363165F9E4D00BD975E /* BAAppDelegate.m in Sources */,
+				DF0497FB165FAF7A0047262E /* BADataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +484,7 @@
 				CE628394165F9E4E00BD975E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE628395165F9E4E00BD975E /* Build configuration list for PBXNativeTarget "ios-banvasTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +493,7 @@
 				CE628397165F9E4E00BD975E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
