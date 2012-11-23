@@ -17,10 +17,8 @@
 		CE628367165F9E4E00BD975E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE628366165F9E4E00BD975E /* Default@2x.png */; };
 		CE628369165F9E4E00BD975E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE628368165F9E4E00BD975E /* Default-568h@2x.png */; };
 		CE62836C165F9E4E00BD975E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE62836A165F9E4E00BD975E /* MainStoryboard.storyboard */; };
-		CE62836F165F9E4E00BD975E /* BAFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62836E165F9E4E00BD975E /* BAFirstViewController.m */; };
 		CE628371165F9E4E00BD975E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = CE628370165F9E4E00BD975E /* first.png */; };
 		CE628373165F9E4E00BD975E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE628372165F9E4E00BD975E /* first@2x.png */; };
-		CE628376165F9E4E00BD975E /* BASecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE628375165F9E4E00BD975E /* BASecondViewController.m */; };
 		CE628378165F9E4E00BD975E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = CE628377165F9E4E00BD975E /* second.png */; };
 		CE62837A165F9E4E00BD975E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE628379165F9E4E00BD975E /* second@2x.png */; };
 		CE628382165F9E4E00BD975E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE628381165F9E4E00BD975E /* SenTestingKit.framework */; };
@@ -55,12 +53,8 @@
 		CE628366165F9E4E00BD975E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CE628368165F9E4E00BD975E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CE62836B165F9E4E00BD975E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		CE62836D165F9E4E00BD975E /* BAFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAFirstViewController.h; sourceTree = "<group>"; };
-		CE62836E165F9E4E00BD975E /* BAFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BAFirstViewController.m; sourceTree = "<group>"; };
 		CE628370165F9E4E00BD975E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		CE628372165F9E4E00BD975E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		CE628374165F9E4E00BD975E /* BASecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BASecondViewController.h; sourceTree = "<group>"; };
-		CE628375165F9E4E00BD975E /* BASecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BASecondViewController.m; sourceTree = "<group>"; };
 		CE628377165F9E4E00BD975E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		CE628379165F9E4E00BD975E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		CE628380165F9E4E00BD975E /* ios-banvasTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-banvasTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,12 +125,8 @@
 				CE628361165F9E4D00BD975E /* BAAppDelegate.h */,
 				CE628362165F9E4D00BD975E /* BAAppDelegate.m */,
 				CE62836A165F9E4E00BD975E /* MainStoryboard.storyboard */,
-				CE62836D165F9E4E00BD975E /* BAFirstViewController.h */,
-				CE62836E165F9E4E00BD975E /* BAFirstViewController.m */,
 				CE628370165F9E4E00BD975E /* first.png */,
 				CE628372165F9E4E00BD975E /* first@2x.png */,
-				CE628374165F9E4E00BD975E /* BASecondViewController.h */,
-				CE628375165F9E4E00BD975E /* BASecondViewController.m */,
 				CE628377165F9E4E00BD975E /* second.png */,
 				CE628379165F9E4E00BD975E /* second@2x.png */,
 				CE628359165F9E4D00BD975E /* Supporting Files */,
@@ -294,8 +284,6 @@
 			files = (
 				CE62835F165F9E4D00BD975E /* main.m in Sources */,
 				CE628363165F9E4D00BD975E /* BAAppDelegate.m in Sources */,
-				CE62836F165F9E4E00BD975E /* BAFirstViewController.m in Sources */,
-				CE628376165F9E4E00BD975E /* BASecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
