@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface BADataSource : NSObject{
-    
     NSCache* cache;
 }
 
@@ -18,8 +17,6 @@
 //client side
 -(NSArray*) getPersonList;
 -(NSDictionary*) getPersonInfo:(id) byPersonID;
-
-
 
 //server side
 

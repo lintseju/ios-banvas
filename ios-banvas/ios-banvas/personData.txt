@@ -1,0 +1,46 @@
+[{
+    "name": "李柏緯",
+    "tag": "Designer",
+    "company": "台灣大學",
+    "department": "資訊管理學系",
+    "position": "互動設計師"
+    
+},
+{   "name": "林則如",
+    "tag": "Friend",
+    "company": "國立台灣大學",
+    "department": "資訊工程學研究所",
+    "position": "學生",
+    "about_me": "念先帝創業未半\n\"中道崩殂\"\n\\",
+    "skill":["python", "c/c++"],
+    "resume":[{
+        "company": "國立台灣大學",
+        "department": "資訊工程學研究所",
+        "position": "學生"
+    },{
+        "company": "建國中學",
+        "department": "日間部",
+        "position": "學生"
+    }
+    ],
+    "email":"xd@ntu.edu.tw",
+    "fb":"xddd@fb.com",
+    "twitter":"XDDDDDD",
+    "phone_number":"0923456789",
+    "timeline":[{
+        "title":"打雜工",
+        "description":"專業端茶水",
+        "time_begin":"2010.9",
+        "time_end":"2010.11",
+        "thumbnial":"nil"
+    },{
+        "title":"雜工老大",
+        "description":"專業打雜工",
+        "time_begin":"2010.12",
+        "time_end":"2011.11",
+        "thumbnial":"nil"
+    }
+    ]
+},
+{
+}]
