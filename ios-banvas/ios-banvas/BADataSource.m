@@ -17,6 +17,8 @@ static NSString *dbFileType = @"txt";
 //cache keys
 const static NSString *BADataSourceCacheKeyForPersonList = @"BADataSource.Cache.PersonList";
 static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person.%@";
+static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@";
+
 
 +(BADataSource*) data
 {
@@ -73,10 +75,31 @@ static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person
                 [personList addObject:personNow];
             }
         }
-        NSLog(@"%@", personList);
         [cache setObject:personList forKey:BADataSourceCacheKeyForPersonList];
     }
     return (NSArray*)personList;
+}
+
+-(NSArray*) getPersonListByTag:(NSString*)tag
+{
+    NSString *cacheKey = [NSString stringWithFormat:BADataSourceCacheKeyForPersonTag, tag];
+    NSMutableArray *personListByTag = [cache objectForKey:cacheKey];
+    if(!personListByTag){
+        NSArray *personList = [[BADataSource data] getPersonList];
+        if(!tag){ //tag == nil
+            for(NSDictionary *obj in personList){
+                if([obj valueForKey:@"tag"])
+                    [personListByTag addObject:obj];
+            }
+        }else{  //tag != nil
+            for(NSDictionary *obj in personList){
+                NSString *tagNow = [obj valueForKey:@"tag"];
+                if([tagNow isEqualToString:tag])
+                    [personListByTag addObject:obj];
+            }
+        }
+    }
+    return (NSArray*)personListByTag;
 }
 
 -(NSDictionary*) getPersonInfo:(NSString*) byPersonID

@@ -23,6 +23,7 @@ static NSArray *arrayOfPersonInList;
 
 //client side
 -(NSArray*) getPersonList;
+-(NSArray*) getPersonListByTag:(NSString*)tag;
 -(NSDictionary*) getPersonInfo:(NSString*) byPersonID;
 
 //server side
