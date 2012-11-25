@@ -10,6 +10,14 @@
 
 @implementation BADataSource
 
+//DB filename
+static NSString *dbFileName = @"personData";
+static NSString *dbFileType = @"txt";
+
+//cache keys
+const static NSString *BADataSourceCacheKeyForPersonList = @"BADataSource.Cache.PersonList";
+static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person.%@";
+
 +(BADataSource*) data
 {
     static dispatch_once_t once;
@@ -20,16 +28,72 @@
     return data;
 }
 
+- (id)init {
+    if (self = [super init]) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
+        NSString *dbString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        dbFileArray = [dbString objectFromJSONString];
+        
+        arrayOfPersonInList = [[NSArray alloc] initWithObjects:@"name", @"tag", @"company", @"department", @"position", nil];
+        
+        cache = [[NSCache alloc] init];
+        //NSLog(@"%@", dbFileArray);
+    }
+    return self;
+}
+
+- (void)refresh {
+    NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
+    NSString *dbString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    dbFileArray = [dbString objectFromJSONString];
+    
+    [self cleanCache];
+}
+
+- (void)cleanCache {
+    [cache removeAllObjects];
+}
+
 #pragma mark - ClientSide
 
 -(NSArray*) getPersonList
 {
-    return nil;
+    NSMutableArray *personList = [cache objectForKey:BADataSourceCacheKeyForPersonList];
+    if(!personList){
+        //personInList records the person ID
+        personList = [[NSMutableArray alloc] init];
+        NSMutableArray *personInList = [[NSMutableArray alloc] init];
+        for(NSDictionary *obj in dbFileArray){
+            NSString *personIDNow = [obj valueForKey:@"id"];
+            if(personIDNow != nil && ![personInList containsObject:personIDNow]){
+                [personInList addObject:personIDNow];
+                NSArray *valuesForPersonNow = [obj objectsForKeys:arrayOfPersonInList notFoundMarker:@"keyNotFoundError"];
+                NSDictionary *personNow = [[NSDictionary alloc] initWithObjects:valuesForPersonNow
+                                                                                      forKeys:arrayOfPersonInList];
+                [personList addObject:personNow];
+            }
+        }
+        NSLog(@"%@", personList);
+        [cache setObject:personList forKey:BADataSourceCacheKeyForPersonList];
+    }
+    return (NSArray*)personList;
 }
 
--(NSDictionary*) getPersonInfo:(id) byPersonID
+-(NSDictionary*) getPersonInfo:(NSString*) byPersonID
 {
-    return nil;
+    NSString *cacheKey = [NSString stringWithFormat:BADataSourceCacheKeyForPersonInID, byPersonID];
+    NSDictionary *personDict = [cache objectForKey:cacheKey];
+    if(!personDict){
+        for(NSDictionary *obj in dbFileArray){
+            NSString *personIDNow = [obj valueForKey:@"id"];
+            if([personIDNow isEqualToString:byPersonID]){
+                personDict = [[NSDictionary alloc] initWithDictionary:obj];
+                [cache setObject:personDict forKey:cacheKey];
+                break;
+            }
+        }
+    }
+    return personDict;
 }
 
 #pragma mark - ServerSide

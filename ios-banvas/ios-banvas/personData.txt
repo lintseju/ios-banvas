@@ -1,4 +1,5 @@
 [{
+    "id":"0",
     "name": "李柏緯",
     "tag": "Designer",
     "company": "台灣大學",
@@ -6,12 +7,14 @@
     "position": "互動設計師"
     
 },
-{   "name": "林則如",
+{   
+    "id": "1",
+    "name": "林則如",
     "tag": "Friend",
     "company": "國立台灣大學",
     "department": "資訊工程學研究所",
     "position": "學生",
-    "about_me": "念先帝創業未半\n\"中道崩殂\"\n\\",
+    "about_me": "念先帝創業未半中道崩殂",
     "skill":["python", "c/c++"],
     "resume":[{
         "company": "國立台灣大學",
