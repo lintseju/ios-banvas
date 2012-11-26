@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BACardViewViewController : UIViewController
+#import <QuartzCore/QuartzCore.h>
+#import "BADataSource.h"
+@interface BACardViewController : UIViewController
 
 @end

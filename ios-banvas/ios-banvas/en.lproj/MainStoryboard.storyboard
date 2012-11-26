@@ -49,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAt-sv-c2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="-185"/>
+            <point key="canvasLocation" x="618" y="-217"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="Ihq-G5-XGX">
@@ -66,7 +66,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7z-i4-tBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="664" y="-186"/>
+            <point key="canvasLocation" x="84" y="-218"/>
         </scene>
         <!--People List View Controller - Root View Controller-->
         <scene sceneID="yXA-3X-VvW">
@@ -92,7 +92,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAO-cd-Jml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="567"/>
+            <point key="canvasLocation" x="618" y="507"/>
         </scene>
         <!--Navigation Controller - List-->
         <scene sceneID="BLx-eM-emY">
@@ -109,18 +109,35 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjR-yQ-u2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="567"/>
+            <point key="canvasLocation" x="89" y="507"/>
         </scene>
-        <!--Table View Controller - Root View Controller-->
-        <scene sceneID="EZu-et-al2">
+        <!--Navigation Controller - For Card Test-->
+        <scene sceneID="8s2-71-tZA">
             <objects>
-                <tableViewController id="URc-3i-dRO" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6EO-Ac-FnC">
+                <navigationController definesPresentationContext="YES" id="s5S-Tt-jBd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="For Card Test" id="keM-Gf-gKv"/>
+                    <navigationItem key="navigationItem" id="xoN-8o-Yuo"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d8H-Od-Bv6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="98V-X2-vpC" kind="relationship" relationship="rootViewController" id="bSI-iT-gqe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xja-fM-hzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89" y="1273"/>
+        </scene>
+        <!--Test Cell View Controller - For Card Test-->
+        <scene sceneID="LRs-Z1-dlY">
+            <objects>
+                <tableViewController title="For Card Test" id="98V-X2-vpC" customClass="BATestCellViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="MBR-tS-RFw">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XVU-bS-ihq">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="tBm-Gu-I7J">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -130,36 +147,38 @@
                                 </view>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="98V-X2-vpC" id="AC9-FH-8va"/>
+                            <outlet property="delegate" destination="98V-X2-vpC" id="Fyk-WN-LIN"/>
+                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="tYW-R1-JaS"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XrM-zj-dK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="694" y="1273"/>
-        </scene>
-        <!--Navigation Controller - Item-->
-        <scene sceneID="8s2-71-tZA">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="s5S-Tt-jBd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="keM-Gf-gKv"/>
-                    <navigationItem key="navigationItem" id="xoN-8o-Yuo"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d8H-Od-Bv6">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                    <navigationItem key="navigationItem" title="For Card Test" id="7XS-ig-Vz7"/>
                     <connections>
-                        <segue destination="URc-3i-dRO" kind="relationship" relationship="rootViewController" id="Px8-Op-7C0"/>
+                        <segue destination="TYe-rS-Adb" kind="push" id="tdh-W2-SCW"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xja-fM-hzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5UY-TV-UZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160" y="1273"/>
+            <point key="canvasLocation" x="618" y="1273"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="9qi-Xp-xcz">
+            <objects>
+                <viewController id="TYe-rS-Adb" customClass="BACardViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mcm-kl-mQJ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mYf-8w-dL6"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kkt-FI-JfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1107" y="1273"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="BAPeopleListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleListViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
