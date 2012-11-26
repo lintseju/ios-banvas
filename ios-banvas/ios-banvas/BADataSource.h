@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "JSONKit.h"
 
 //data arrays
@@ -25,6 +26,7 @@ static NSArray *arrayOfPersonInList;
 -(NSArray*) getPersonList;
 -(NSArray*) getPersonListByTag:(NSString*)tag;
 -(NSDictionary*) getPersonInfo:(NSString*) byPersonID;
+-(UIColor*) getColorOfTag:(NSString*)tag;
 
 //server side
 
