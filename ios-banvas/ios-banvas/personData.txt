@@ -4,7 +4,16 @@
     "tag": "Designer",
     "company": "台灣大學",
     "department": "資訊管理學系",
-    "position": "互動設計師"
+    "position": "互動設計師",
+    "about_me": "不如吃顆橘子",
+    "skill": ["javascript", "illustrator"],
+    "resume":[{
+        "company": "國立台灣大學",
+        "department": "資訊管理學系",
+        "position": "學生"
+    }],
+    "email":"kk@ntu.edu.tw"
+
     
 },
 {   
