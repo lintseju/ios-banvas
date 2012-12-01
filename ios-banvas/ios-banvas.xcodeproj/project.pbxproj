@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE43A088166A44D4007E6740 /* BAPeopleListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE43A087166A44D4007E6740 /* BAPeopleListViewCell.m */; };
 		CE628353165F9E4D00BD975E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE628352165F9E4D00BD975E /* UIKit.framework */; };
 		CE628355165F9E4D00BD975E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE628354165F9E4D00BD975E /* Foundation.framework */; };
 		CE628357165F9E4D00BD975E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE628356165F9E4D00BD975E /* CoreGraphics.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE43A086166A44D4007E6740 /* BAPeopleListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAPeopleListViewCell.h; sourceTree = "<group>"; };
+		CE43A087166A44D4007E6740 /* BAPeopleListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAPeopleListViewCell.m; sourceTree = "<group>"; };
 		CE62834E165F9E4D00BD975E /* ios-banvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-banvas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE628352165F9E4D00BD975E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE628354165F9E4D00BD975E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +114,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE43A084166A4165007E6740 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				CE43A086166A44D4007E6740 /* BAPeopleListViewCell.h */,
+				CE43A087166A44D4007E6740 /* BAPeopleListViewCell.m */,
+				CEB27CD816605938000F175A /* BAPeopleListViewController.h */,
+				CEB27CD916605938000F175A /* BAPeopleListViewController.m */,
+			);
+			name = ListView;
+			sourceTree = "<group>";
+		};
 		CE628343165F9E4D00BD975E = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +159,7 @@
 		CE628358165F9E4D00BD975E /* ios-banvas */ = {
 			isa = PBXGroup;
 			children = (
+				CE43A084166A4165007E6740 /* ListView */,
 				DFF1E1F816635F19001555BF /* For test */,
 				DFF1E1F216634AFE001555BF /* CardView */,
 				DFF1E1F0166340F4001555BF /* UIImages */,
@@ -159,8 +174,6 @@
 				CE628377165F9E4E00BD975E /* second.png */,
 				CE628379165F9E4E00BD975E /* second@2x.png */,
 				CE628359165F9E4D00BD975E /* Supporting Files */,
-				CEB27CD816605938000F175A /* BAPeopleListViewController.h */,
-				CEB27CD916605938000F175A /* BAPeopleListViewController.m */,
 			);
 			path = "ios-banvas";
 			sourceTree = "<group>";
@@ -374,6 +387,7 @@
 				CECA43581660969C00EDA4E9 /* JSONKit.m in Sources */,
 				DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */,
 				DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */,
+				CE43A088166A44D4007E6740 /* BAPeopleListViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
