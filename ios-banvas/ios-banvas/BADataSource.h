@@ -28,6 +28,8 @@ static NSArray *arrayOfPersonInList;
 -(NSDictionary*) getPersonInfo:(NSString*) byPersonID;
 -(UIColor*) getColorOfTag:(NSString*)tag;
 
+-(NSArray*) getTagList;
+
 //server side
 
 //For scan class

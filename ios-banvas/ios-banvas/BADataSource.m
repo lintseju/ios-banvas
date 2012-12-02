@@ -16,6 +16,7 @@ static NSString *dbFileType = @"txt";
 
 //cache keys
 const static NSString *BADataSourceCacheKeyForPersonList = @"BADataSource.Cache.PersonList";
+const static NSString *BADataSourceCacheKeyForTagList = @"BADataSource.Cache.TagList";
 static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person.%@";
 static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@";
 
@@ -86,10 +87,10 @@ static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@"
     NSMutableArray *personListByTag = [cache objectForKey:cacheKey];
     if(!personListByTag){
         NSArray *personList = [[BADataSource data] getPersonList];
+        personListByTag = [[NSMutableArray alloc] init];
         if(!tag){ //tag == nil
             for(NSDictionary *obj in personList){
-                if([obj valueForKey:@"tag"])
-                    [personListByTag addObject:obj];
+                [personListByTag addObject:obj];
             }
         }else{  //tag != nil
             for(NSDictionary *obj in personList){
@@ -117,6 +118,30 @@ static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@"
         }
     }
     return personDict;
+}
+
+-(UIColor*) getColorOfTag:(NSString*)tag
+{
+    return [UIColor greenColor];
+}
+
+-(NSArray*) getTagList
+{
+    NSMutableArray *tagList = [cache objectForKey:BADataSourceCacheKeyForTagList];
+    if(!tagList){
+        tagList = [[NSMutableArray alloc] init];
+        for(NSDictionary *obj in dbFileArray){
+            NSString *tagNow = [obj valueForKey:@"tag"];
+            if(tagNow == nil)
+                continue;
+            if(![tagList containsObject:tagNow]){
+                [tagList addObject:tagNow];
+            }
+        }
+        if(!tagList)
+            [cache setObject:tagList forKey:BADataSourceCacheKeyForTagList];
+    }
+    return (NSArray*)tagList;
 }
 
 #pragma mark - ServerSide
