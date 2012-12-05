@@ -23,36 +23,11 @@
     return self;
 }
 
-/*- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if(self){
-        displayTag = YES;
-        displayName = nil;
-    }
-    NSLog(@"initWithaDecoder %@", aDecoder);
-    return self;
-}*/
-
 - (id)init
 {
     self = [super init];
     if(self){
-        displayTag = NO;
     }
-    NSLog(@"init");
-    return self;
-}
-
-- (id)initWithTag:(NSString*)tag
-{
-    self = [super init];
-    if(self){
-        displayTag = YES;
-        //displayName = tag;
-        displayName = [[NSString alloc] initWithString:tag];
-    }
-    NSLog(@"initWithTag, %d, %@", displayTag, displayName);
     return self;
 }
 
@@ -89,10 +64,10 @@
         int listIdx = indexPath.row;
         NSArray *listArray;
         NSDictionary *cellInfo;
-        if(!displayTag){
-            listArray = [[BADataSource data] getPersonList];
+        if([self.navigationController.viewControllers indexOfObject:self] == 1){
+            listArray = [[BADataSource data] getPersonListByTag:self.displayName];
         }else{
-            listArray = [[BADataSource data] getPersonListByTag:displayName];
+            listArray = [[BADataSource data] getPersonList];
         }
         cellInfo = [listArray objectAtIndex:listIdx];
         [[BADataSource data] deletePersonByPersonID:[cellInfo valueForKey:@"id"]];
@@ -107,9 +82,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(!displayTag)
-        return [[[BADataSource data] getPersonList] count];
-    return [[[BADataSource data] getPersonListByTag:displayName] count];
+    if([self.navigationController.viewControllers indexOfObject:self] == 1)
+        return [[[BADataSource data] getPersonListByTag:self.displayName] count];
+    return [[[BADataSource data] getPersonList] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,17 +95,16 @@
     NSArray *listArray;
     NSDictionary *cellInfo;
     BAPeopleListViewCell *personCell = (BAPeopleListViewCell*)cell;
-    if(!displayTag){
+    if([self.navigationController.viewControllers indexOfObject:self] == 1){
+        [personCell.coloredTag setBackgroundColor:[[BADataSource data] getColorOfTag:self.displayName]];
+        listArray = [[BADataSource data] getPersonListByTag:self.displayName];
+    }else{
         [personCell.coloredTag setBackgroundColor:[UIColor whiteColor]];
         listArray = [[BADataSource data] getPersonList];
-    }else{
-        [personCell.coloredTag setBackgroundColor:[[BADataSource data] getColorOfTag:displayName]];
-        listArray = [[BADataSource data] getPersonListByTag:displayName];
     }
     cellInfo = [listArray objectAtIndex:listIdx];
     personCell.nameLabel.text = [cellInfo valueForKey:@"name"];
     personCell.descriptionLabel.text = [cellInfo valueForKey:@"company"];
-    NSLog(@"cellForRowArIndexPath, %d, %@", displayTag, displayName);
     return cell;
 }
 

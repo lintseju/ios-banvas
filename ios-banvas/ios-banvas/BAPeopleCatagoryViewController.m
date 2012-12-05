@@ -124,9 +124,9 @@
 {
     if([segue.identifier isEqualToString:@"pushByTag"]){
         UITableViewCell *cell = (UITableViewCell*)sender;
-        NSLog(@"%@", cell.textLabel.text);
-        BAPeopleListViewController *listByTag = [[BAPeopleListViewController alloc] initWithTag:cell.textLabel.text];
+        BAPeopleListViewController *listByTag = [[BAPeopleListViewController alloc] init];
         listByTag = segue.destinationViewController;
+        listByTag.displayName = cell.textLabel.text;
         listByTag.navigationItem.title = [NSString stringWithFormat:@"%@", cell.textLabel.text];
     }
 }

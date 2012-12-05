@@ -15,15 +15,12 @@
 #import "BAPeopleListViewCell.h"
 
 @interface BAPeopleListViewController : UITableViewController{
-    BOOL displayTag;
     /*
      * displayTag is a string of tag name
      * If the person does not in any catagory, then displayTag == nil
      */
-    NSString *displayName;
 }
 
-//using in catagory book
-- (id)initWithTag:(NSString*)tag;
+@property (strong, nonatomic) NSString *displayName;
 
 @end
