@@ -1,5 +1,5 @@
 //
-//  BAPeopleCatagoryViewController.h
+//  BAPeopleCategoryViewController.h
 //  ios-banvas
 //
 //  Created by lintseju on 12/12/2.
@@ -10,6 +10,6 @@
 #import "BADataSource.h"
 #import "BAPeopleListViewController.h"
 
-@interface BAPeopleCatagoryViewController : UITableViewController
+@interface BAPeopleCategoryViewController : UITableViewController
 
 @end

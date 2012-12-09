@@ -10,6 +10,12 @@
 
 @implementation BADataSource
 
+//data arrays
+static NSArray *arrayOfPersonInList;
+
+//Configure filename
+static NSString *configName = @"banvas";
+static NSString *configType = @"conf";
 //DB filename
 static NSString *dbFileName = @"personData";
 static NSString *dbFileType = @"txt";
@@ -19,6 +25,7 @@ const static NSString *BADataSourceCacheKeyForPersonList = @"BADataSource.Cache.
 const static NSString *BADataSourceCacheKeyForTagList = @"BADataSource.Cache.TagList";
 static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person.%@";
 static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@";
+static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color";
 
 
 +(BADataSource*) data
@@ -36,11 +43,13 @@ static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@"
         NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
         NSString *dbString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         dbFileArray = [dbString objectFromJSONString];
+        NSString *configPath = [[NSBundle mainBundle] pathForResource:configName ofType:configType];
+        NSString *confString = [[NSString alloc] initWithContentsOfFile:configPath encoding:NSUTF8StringEncoding error:nil];
+        configDic = [confString objectFromJSONString];
         
         arrayOfPersonInList = [[NSArray alloc] initWithObjects:@"name", @"tag", @"company", @"department", @"position", nil];
         
         cache = [[NSCache alloc] init];
-        //NSLog(@"%@", dbFileArray);
     }
     return self;
 }
@@ -88,11 +97,7 @@ static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@"
     if(!personListByTag){
         NSArray *personList = [[BADataSource data] getPersonList];
         personListByTag = [[NSMutableArray alloc] init];
-        if(!tag){ //tag == nil
-            for(NSDictionary *obj in personList){
-                [personListByTag addObject:obj];
-            }
-        }else{  //tag != nil
+        if(tag){
             for(NSDictionary *obj in personList){
                 NSString *tagNow = [obj valueForKey:@"tag"];
                 if([tagNow isEqualToString:tag])
@@ -122,19 +127,34 @@ static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@"
 
 -(UIColor*) getColorOfTag:(NSString*)tag
 {
-    return [UIColor greenColor];
+    NSString *cacheKey = [NSString stringWithFormat:BADataSourceCacheKeyForTagColor, tag];
+    UIColor *color = [cache objectForKey:cacheKey];
+    NSArray *tagColorList = [configDic valueForKey:@"tag"];
+    if(!color){
+        for(NSDictionary *obj in tagColorList){
+            NSString *nameNow = [obj valueForKey:@"name"];
+            if([nameNow isEqualToString:tag]){
+                CGFloat r = [[obj valueForKey:@"r"] doubleValue];
+                CGFloat g = [[obj valueForKey:@"g"] doubleValue];
+                CGFloat b = [[obj valueForKey:@"b"] doubleValue];
+                CGFloat a = [[obj valueForKey:@"a"] doubleValue];
+                color = [[UIColor alloc] initWithRed:r green:g blue:b alpha:a];
+            }
+        }
+        [cache setObject:color forKey:cacheKey];
+    }
+    return color;
 }
 
 -(NSArray*) getTagList
 {
     NSMutableArray *tagList = [cache objectForKey:BADataSourceCacheKeyForTagList];
     if(!tagList){
+        NSArray *tagInConfig = [configDic valueForKey:@"tag"];
         tagList = [[NSMutableArray alloc] init];
-        for(NSDictionary *obj in dbFileArray){
-            NSString *tagNow = [obj valueForKey:@"tag"];
-            if(tagNow == nil)
-                continue;
-            if(![tagList containsObject:tagNow]){
+        for(NSDictionary *obj in tagInConfig){
+            NSString *tagNow = [obj valueForKey:@"name"];
+            if(tagNow != nil && ![tagNow isEqualToString:noneCategory] && ![tagList containsObject:tagNow]){
                 [tagList addObject:tagNow];
             }
         }
@@ -145,6 +165,26 @@ static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@"
 }
 
 #pragma mark - ServerSide
+
+-(Boolean) refreshData:(NSString*)data
+{
+    return YES;
+}
+
+-(Boolean) addCategory:(NSString*)categoryName
+{
+    return YES;
+}
+
+-(Boolean) deleteCategory:(NSString*)categoryName
+{
+    return YES;
+}
+
+-(Boolean) updateTagColor:(NSString*)tag toColor:(UIColor*)color
+{
+    return YES;
+}
 
 -(Boolean) createPersonByPersonID:(NSString*) personID
 {

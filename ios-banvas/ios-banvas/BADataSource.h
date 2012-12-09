@@ -10,11 +10,13 @@
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
 
-//data arrays
-static NSArray *arrayOfPersonInList;
+//Every people must have it's own tag!
+//No category please assign "未分類"
+static NSString *noneCategory = @"未分類";
 
 @interface BADataSource : NSObject{
     NSArray* dbFileArray;
+    NSDictionary *configDic;
     NSCache* cache;
 }
 
@@ -31,15 +33,18 @@ static NSArray *arrayOfPersonInList;
 -(NSArray*) getTagList;
 
 //server side
+-(Boolean) refreshData:(NSString*)data;
 
 //For scan class
 -(Boolean) createPersonByPersonID:(NSString*) personID;
 
 //For Collection update
+-(Boolean) addCategory:(NSString*)categoryName;
+-(Boolean) deleteCategory:(NSString*)categoryName;
+-(Boolean) updateTagColor:(NSString*)tag toColor:(UIColor*)color;
+
 -(Boolean) updatePersonByPersonID:(NSString*) personID andTag:(NSString*)tag;
-
 -(Boolean) deletePersonByPersonID:(NSString*) personID;
-
 -(Boolean) readPersonByPersonID:(NSString*) personID;
 
 @end

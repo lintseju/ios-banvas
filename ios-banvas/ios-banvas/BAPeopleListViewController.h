@@ -7,20 +7,16 @@
 //
 //
 //
-//  This class is for both total list and second level of catagorical list.
+//  This class is for both total list and second level of categorical list.
 //
 
 #import <UIKit/UIKit.h>
 #import "BADataSource.h"
 #import "BAPeopleListViewCell.h"
 
-@interface BAPeopleListViewController : UITableViewController{
-    /*
-     * displayTag is a string of tag name
-     * If the person does not in any catagory, then displayTag == nil
-     */
-}
+@interface BAPeopleListViewController : UITableViewController
 
 @property (strong, nonatomic) NSString *displayName;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *reTagButton;
 
 @end

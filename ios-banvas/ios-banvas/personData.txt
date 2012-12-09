@@ -19,7 +19,7 @@
 {   
     "id": "1",
     "name": "林則如",
-    "tag": "Friend",
+    "tag": "未分類",
     "company": "國立台灣大學",
     "department": "資訊工程學研究所",
     "position": "學生",

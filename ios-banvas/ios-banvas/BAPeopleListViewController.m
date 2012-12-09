@@ -34,15 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    /*
-    //testing...
-    NSArray *personList = [[BADataSource data] getPersonListByTag:@"Friend"];
-    NSDictionary *personInfo = [[BADataSource data] getPersonInfo:@"1"];
-    NSLog(@"%@", personList);
-    NSLog(@"%@", personInfo);
-    //testing...
-     */
+    if([self.navigationController.viewControllers indexOfObject:self] == 0)
+        self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning

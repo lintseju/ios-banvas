@@ -25,16 +25,16 @@
             </objects>
             <point key="canvasLocation" x="-808" y="512"/>
         </scene>
-        <!--People Catagory View Controller - 分類簿-->
+        <!--People Category View Controller - 分類簿-->
         <scene sceneID="1VC-rj-kSf">
             <objects>
-                <tableViewController id="ZDN-1s-TVi" customClass="BAPeopleCatagoryViewController" sceneMemberID="viewController">
+                <tableViewController id="ZDN-1s-TVi" customClass="BAPeopleCategoryViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="wYb-Yf-CaC">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="catagoryCell" id="VxI-p0-S7Q">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categoryCell" id="VxI-p0-S7Q">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -48,17 +48,19 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="分類簿" id="tvt-lG-shH"/>
+                    <navigationItem key="navigationItem" title="分類簿" id="tvt-lG-shH">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="MVE-DP-v2g"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAt-sv-c2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="618" y="-217"/>
         </scene>
-        <!--Navigation Controller - Catagory-->
+        <!--Navigation Controller - Category-->
         <scene sceneID="Ihq-G5-XGX">
             <objects>
                 <navigationController definesPresentationContext="YES" id="md0-dM-c1b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Catagory" id="3xg-oJ-wmL"/>
+                    <tabBarItem key="tabBarItem" title="Category" id="3xg-oJ-wmL"/>
                     <navigationItem key="navigationItem" id="EgH-To-LXf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ER-nY-h6b">
                         <autoresizingMask key="autoresizingMask"/>
@@ -90,6 +92,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wu-Ta-IP8">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="10" id="hg2-mH-wGr"/>
+                                                <constraint firstAttribute="height" constant="63" id="jj8-ZI-LTb"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,7 +128,6 @@
                                     <constraint firstItem="UQe-q8-Hj8" firstAttribute="bottom" secondItem="mgc-HK-5aA" secondAttribute="bottom" type="default" id="5ZY-nK-vBP"/>
                                     <constraint firstItem="7Cj-KD-rgG" firstAttribute="top" secondItem="bjr-rg-EHK" secondAttribute="top" constant="9" id="8lU-ek-fqo"/>
                                     <constraint firstItem="7Cj-KD-rgG" firstAttribute="leading" secondItem="bjr-rg-EHK" secondAttribute="leading" constant="93" id="Dtl-ee-C4a"/>
-                                    <constraint firstItem="UQe-q8-Hj8" firstAttribute="bottom" secondItem="1Wu-Ta-IP8" secondAttribute="bottom" type="default" id="Uuv-tq-a1L"/>
                                     <constraint firstItem="UQe-q8-Hj8" firstAttribute="leading" secondItem="7Cj-KD-rgG" secondAttribute="leading" type="default" id="a1T-uo-7hH"/>
                                     <constraint firstItem="1Wu-Ta-IP8" firstAttribute="top" secondItem="bjr-rg-EHK" secondAttribute="top" type="default" id="fhy-Wa-7Jk"/>
                                     <constraint firstItem="mgc-HK-5aA" firstAttribute="leading" secondItem="1Wu-Ta-IP8" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ioF-Gz-rnY"/>
@@ -141,7 +143,12 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="名片簿" id="OX1-hg-ssQ"/>
+                    <navigationItem key="navigationItem" title="名片簿" id="OX1-hg-ssQ">
+                        <barButtonItem key="rightBarButtonItem" title="reTag" id="HKl-nb-elo"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="reTagButton" destination="HKl-nb-elo" id="y4k-d7-8Ep"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAO-cd-Jml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,8 +243,8 @@
         <class className="BACardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BACardViewController.h"/>
         </class>
-        <class className="BAPeopleCatagoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleCatagoryViewController.h"/>
+        <class className="BAPeopleCategoryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleCategoryViewController.h"/>
         </class>
         <class className="BAPeopleListViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleListViewCell.h"/>
@@ -250,6 +257,9 @@
         </class>
         <class className="BAPeopleListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="reTagButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="BATestCellViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BATestCellViewController.h"/>
