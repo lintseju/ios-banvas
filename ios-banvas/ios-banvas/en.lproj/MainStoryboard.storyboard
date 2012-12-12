@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -126,19 +126,20 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="UQe-q8-Hj8" firstAttribute="bottom" secondItem="mgc-HK-5aA" secondAttribute="bottom" type="default" id="5ZY-nK-vBP"/>
-                                    <constraint firstItem="7Cj-KD-rgG" firstAttribute="top" secondItem="bjr-rg-EHK" secondAttribute="top" constant="9" id="8lU-ek-fqo"/>
                                     <constraint firstItem="7Cj-KD-rgG" firstAttribute="leading" secondItem="bjr-rg-EHK" secondAttribute="leading" constant="93" id="Dtl-ee-C4a"/>
                                     <constraint firstItem="UQe-q8-Hj8" firstAttribute="leading" secondItem="7Cj-KD-rgG" secondAttribute="leading" type="default" id="a1T-uo-7hH"/>
                                     <constraint firstItem="1Wu-Ta-IP8" firstAttribute="top" secondItem="bjr-rg-EHK" secondAttribute="top" type="default" id="fhy-Wa-7Jk"/>
                                     <constraint firstItem="mgc-HK-5aA" firstAttribute="leading" secondItem="1Wu-Ta-IP8" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ioF-Gz-rnY"/>
                                     <constraint firstItem="1Wu-Ta-IP8" firstAttribute="leading" secondItem="bjr-rg-EHK" secondAttribute="leading" type="default" id="ky4-In-Z4j"/>
                                     <constraint firstItem="mgc-HK-5aA" firstAttribute="centerY" secondItem="bjr-rg-EHK" secondAttribute="centerY" type="default" id="mEt-EA-WaM"/>
+                                    <constraint firstItem="UQe-q8-Hj8" firstAttribute="top" secondItem="7Cj-KD-rgG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="t6W-KZ-dRy"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="coloredTag" destination="1Wu-Ta-IP8" id="DZa-2Y-R37"/>
                                     <outlet property="descriptionLabel" destination="UQe-q8-Hj8" id="g8z-si-iXJ"/>
                                     <outlet property="nameLabel" destination="7Cj-KD-rgG" id="TYg-4O-S8e"/>
                                     <outlet property="thumbnailView" destination="mgc-HK-5aA" id="5bS-Zz-LZ1"/>
+                                    <segue destination="GAx-1w-Q6e" kind="push" identifier="pushCard" id="4kU-i9-D5I"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -152,7 +153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAO-cd-Jml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="512"/>
+            <point key="canvasLocation" x="1034" y="512"/>
         </scene>
         <!--Navigation Controller - List-->
         <scene sceneID="BLx-eM-emY">
@@ -213,61 +214,27 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="For Card Test" id="7XS-ig-Vz7"/>
-                    <connections>
-                        <segue destination="TYe-rS-Adb" kind="push" id="tdh-W2-SCW"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UY-TV-UZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="618" y="1273"/>
         </scene>
         <!--Card View Controller-->
-        <scene sceneID="9qi-Xp-xcz">
+        <scene sceneID="CjK-lx-LBH">
             <objects>
-                <viewController id="TYe-rS-Adb" customClass="BACardViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mcm-kl-mQJ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                <viewController id="GAx-1w-Q6e" customClass="BACardViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qib-ZN-Ci5">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mYf-8w-dL6"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" id="A5a-A0-NEL"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kkt-FI-JfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r33-aO-bQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1107" y="1273"/>
+            <point key="canvasLocation" x="1501" y="512"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="BACardViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BACardViewController.h"/>
-        </class>
-        <class className="BAPeopleCategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleCategoryViewController.h"/>
-        </class>
-        <class className="BAPeopleListViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleListViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="coloredTag" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thumbnailView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BAPeopleListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="reTagButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="BATestCellViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BATestCellViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

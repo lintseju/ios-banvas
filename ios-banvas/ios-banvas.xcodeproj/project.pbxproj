@@ -33,6 +33,9 @@
 		CEB27CDA16605938000F175A /* BAPeopleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB27CD916605938000F175A /* BAPeopleListViewController.m */; };
 		CECA43581660969C00EDA4E9 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CECA43571660969C00EDA4E9 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF0497FB165FAF7A0047262E /* BADataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0497FA165FAF7A0047262E /* BADataSource.m */; };
+		DF2D96151678F3A900CED61B /* 暴走漫画素材095www.yiduqiang.com.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF2D96141678F3A900CED61B /* 暴走漫画素材095www.yiduqiang.com.jpg */; };
+		DF2D96181679116700CED61B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = DF2D96171679116700CED61B /* back.png */; };
+		DF2D961A1679141000CED61B /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DF2D96191679141000CED61B /* head.png */; };
 		DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1F416634B48001555BF /* BACardViewController.m */; };
 		DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1FA16635F39001555BF /* BATestCellViewController.m */; };
 		DFF1E1FF1663792D001555BF /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DFF1E1FE1663792D001555BF /* bg.jpg */; };
@@ -86,6 +89,9 @@
 		CECA43571660969C00EDA4E9 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		DF0497F9165FAF7A0047262E /* BADataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BADataSource.h; sourceTree = "<group>"; };
 		DF0497FA165FAF7A0047262E /* BADataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BADataSource.m; sourceTree = "<group>"; };
+		DF2D96141678F3A900CED61B /* 暴走漫画素材095www.yiduqiang.com.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "暴走漫画素材095www.yiduqiang.com.jpg"; path = "../../../../素材/暴走漫画素材包/暴走漫画素材095www.yiduqiang.com.jpg"; sourceTree = "<group>"; };
+		DF2D96171679116700CED61B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		DF2D96191679141000CED61B /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head.png; sourceTree = "<group>"; };
 		DFF1E1F316634B48001555BF /* BACardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACardViewController.h; sourceTree = "<group>"; };
 		DFF1E1F416634B48001555BF /* BACardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACardViewController.m; sourceTree = "<group>"; };
 		DFF1E1F916635F39001555BF /* BATestCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATestCellViewController.h; sourceTree = "<group>"; };
@@ -255,6 +261,9 @@
 		DFF1E1F216634AFE001555BF /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				DF2D96191679141000CED61B /* head.png */,
+				DF2D96171679116700CED61B /* back.png */,
+				DF2D96141678F3A900CED61B /* 暴走漫画素材095www.yiduqiang.com.jpg */,
 				DFF1E1FE1663792D001555BF /* bg.jpg */,
 				DFF1E1F316634B48001555BF /* BACardViewController.h */,
 				DFF1E1F416634B48001555BF /* BACardViewController.m */,
@@ -355,6 +364,9 @@
 				CE67E7AA1661053800FC7EBD /* personData.txt in Resources */,
 				DFF1E1FF1663792D001555BF /* bg.jpg in Resources */,
 				CE3ADE85166F2EA900854362 /* banvas.conf in Resources */,
+				DF2D96151678F3A900CED61B /* 暴走漫画素材095www.yiduqiang.com.jpg in Resources */,
+				DF2D96181679116700CED61B /* back.png in Resources */,
+				DF2D961A1679141000CED61B /* head.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,17 +26,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    UIImageView* backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.jpg"]];
-    backgroundView.layer.cornerRadius = 50.0;
-    backgroundView.layer.masksToBounds = YES;
+    UIImageView *customBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head.png"]];
+    [self.view addSubview:customBackground];
+    [self.view sendSubviewToBack:customBackground];
     
-    
-    [self.view addSubview:backgroundView];
-    [self.view sendSubviewToBack:backgroundView];
-//    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.jpg"]]];
+  
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
