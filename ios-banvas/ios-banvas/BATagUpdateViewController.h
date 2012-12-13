@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BADataSource.h"
 
-@interface BATagUpdateViewController : UIViewController
+@interface BATagUpdateViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *textInput;
+@property (strong, nonatomic) IBOutlet UIPickerView *colorSelect;
+@property (strong, nonatomic) NSString *tagName;
+
++ (UIColor*)getColorByIndex:(NSInteger)colorListIndex;
+
+- (IBAction)buttonTouched:(id)sender;
 
 @end

@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if([self.navigationController.viewControllers indexOfObject:self] == 0)
+    //if([self.navigationController.viewControllers indexOfObject:self] == 0)
         self.navigationItem.rightBarButtonItem = nil;
 }
 
@@ -83,7 +83,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier /*forIndexPath:indexPath*/];
     int listIdx = indexPath.row;
     NSArray *listArray;
     NSDictionary *cellInfo;
