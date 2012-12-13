@@ -171,7 +171,7 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
     return YES;
 }
 
--(Boolean) addCategory:(NSString*)categoryName
+-(Boolean) addCategory:(NSString*)categoryName andColor:(UIColor*)color
 {
     return YES;
 }

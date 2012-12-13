@@ -39,7 +39,7 @@ static NSString *noneCategory = @"未分類";
 -(Boolean) createPersonByPersonID:(NSString*) personID;
 
 //For Collection update
--(Boolean) addCategory:(NSString*)categoryName;
+-(Boolean) addCategory:(NSString*)categoryName andColor:(UIColor*)color;
 -(Boolean) deleteCategory:(NSString*)categoryName;
 -(Boolean) updateTagColor:(NSString*)tag toColor:(UIColor*)color;
 
