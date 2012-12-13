@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "BADataSource.h"
 #import "BAPeopleListViewCell.h"
+#import "BACardViewController.h"
 
 @interface BAPeopleListViewController : UITableViewController
 

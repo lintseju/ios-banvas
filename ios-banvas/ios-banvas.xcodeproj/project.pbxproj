@@ -31,8 +31,11 @@
 		CE62838F165F9E4E00BD975E /* ios_banvasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62838E165F9E4E00BD975E /* ios_banvasTests.m */; };
 		CE67E7AA1661053800FC7EBD /* personData.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE67E7A91661053800FC7EBD /* personData.txt */; };
 		CEB27CDA16605938000F175A /* BAPeopleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB27CD916605938000F175A /* BAPeopleListViewController.m */; };
+		CEC6C52E1679821E0064A634 /* BATagUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC6C52D1679821E0064A634 /* BATagUpdateViewController.m */; };
 		CECA43581660969C00EDA4E9 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CECA43571660969C00EDA4E9 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF0497FB165FAF7A0047262E /* BADataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0497FA165FAF7A0047262E /* BADataSource.m */; };
+		DF2D96181679116700CED61B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = DF2D96171679116700CED61B /* back.png */; };
+		DF2D961A1679141000CED61B /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DF2D96191679141000CED61B /* head.png */; };
 		DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1F416634B48001555BF /* BACardViewController.m */; };
 		DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1FA16635F39001555BF /* BATestCellViewController.m */; };
 		DFF1E1FF1663792D001555BF /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DFF1E1FE1663792D001555BF /* bg.jpg */; };
@@ -82,10 +85,14 @@
 		CE67E7A91661053800FC7EBD /* personData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = personData.txt; sourceTree = "<group>"; };
 		CEB27CD816605938000F175A /* BAPeopleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAPeopleListViewController.h; sourceTree = "<group>"; };
 		CEB27CD916605938000F175A /* BAPeopleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAPeopleListViewController.m; sourceTree = "<group>"; };
+		CEC6C52C1679821E0064A634 /* BATagUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATagUpdateViewController.h; sourceTree = "<group>"; };
+		CEC6C52D1679821E0064A634 /* BATagUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATagUpdateViewController.m; sourceTree = "<group>"; };
 		CECA43561660969C00EDA4E9 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		CECA43571660969C00EDA4E9 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		DF0497F9165FAF7A0047262E /* BADataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BADataSource.h; sourceTree = "<group>"; };
 		DF0497FA165FAF7A0047262E /* BADataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BADataSource.m; sourceTree = "<group>"; };
+		DF2D96171679116700CED61B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		DF2D96191679141000CED61B /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head.png; sourceTree = "<group>"; };
 		DFF1E1F316634B48001555BF /* BACardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACardViewController.h; sourceTree = "<group>"; };
 		DFF1E1F416634B48001555BF /* BACardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACardViewController.m; sourceTree = "<group>"; };
 		DFF1E1F916635F39001555BF /* BATestCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATestCellViewController.h; sourceTree = "<group>"; };
@@ -122,6 +129,7 @@
 		CE43A084166A4165007E6740 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
+				CEC6C52B167982040064A634 /* tagUpdate */,
 				CE43A086166A44D4007E6740 /* BAPeopleListViewCell.h */,
 				CE43A087166A44D4007E6740 /* BAPeopleListViewCell.m */,
 				CEB27CD816605938000F175A /* BAPeopleListViewController.h */,
@@ -218,6 +226,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CEC6C52B167982040064A634 /* tagUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				CEC6C52C1679821E0064A634 /* BATagUpdateViewController.h */,
+				CEC6C52D1679821E0064A634 /* BATagUpdateViewController.m */,
+			);
+			name = tagUpdate;
+			sourceTree = "<group>";
+		};
 		CECA43541660964F00EDA4E9 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +272,8 @@
 		DFF1E1F216634AFE001555BF /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				DF2D96191679141000CED61B /* head.png */,
+				DF2D96171679116700CED61B /* back.png */,
 				DFF1E1FE1663792D001555BF /* bg.jpg */,
 				DFF1E1F316634B48001555BF /* BACardViewController.h */,
 				DFF1E1F416634B48001555BF /* BACardViewController.m */,
@@ -355,6 +374,8 @@
 				CE67E7AA1661053800FC7EBD /* personData.txt in Resources */,
 				DFF1E1FF1663792D001555BF /* bg.jpg in Resources */,
 				CE3ADE85166F2EA900854362 /* banvas.conf in Resources */,
+				DF2D96181679116700CED61B /* back.png in Resources */,
+				DF2D961A1679141000CED61B /* head.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +419,7 @@
 				DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */,
 				CE43A088166A44D4007E6740 /* BAPeopleListViewCell.m in Sources */,
 				CE3ADE87166F77A900854362 /* BAPeopleCategoryViewController.m in Sources */,
+				CEC6C52E1679821E0064A634 /* BATagUpdateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
