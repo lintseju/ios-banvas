@@ -101,8 +101,10 @@
     personCell.descriptionLabel.text = [cellInfo valueForKey:@"company"];
     personCell.personID = [cellInfo valueForKey:@"id"];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:[cellInfo valueForKey:@"pictureSmall"] ofType:pictureFileType];
-    personCell.imageView.image = [UIImage imageWithContentsOfFile:path];
+    if([[cellInfo valueForKey:@"pictureSmall"] length] != 0){
+        NSString *path = [[NSBundle mainBundle] pathForResource:[cellInfo valueForKey:@"pictureSmall"] ofType:pictureFileType];
+        personCell.imageView.image = [UIImage imageWithContentsOfFile:path];
+    }
     return cell;
 }
 
@@ -125,7 +127,6 @@
 {
     if([segue.identifier isEqualToString:@"pushToCard"]){
         BAPeopleListViewCell *cell = (BAPeopleListViewCell*)sender;
-        NSLog(@"%@", cell.personID);
         BACardViewController *card = segue.destinationViewController;
         card.userId = cell.personID;
     }
