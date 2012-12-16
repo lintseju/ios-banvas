@@ -37,7 +37,7 @@
     
     NSDictionary *PersonInfo =  [[BADataSource data]getPersonInfo:self.userId];
     self.name.text = [PersonInfo valueForKey:@"name"];
-    
+//    self.position 
     NSString *path = [[NSBundle mainBundle] pathForResource:[PersonInfo valueForKey:@"picture"] ofType:pictureFileType];
     self.picture.image = [UIImage imageWithContentsOfFile:path];
 
@@ -67,6 +67,8 @@
     [self setPicture:nil];
     [self setName:nil];
     [self setCompany:nil];
+    [self setPosition:nil];
+    [self setDepartment:nil];
     [super viewDidUnload];
 }
 @end
