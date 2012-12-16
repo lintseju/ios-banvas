@@ -106,7 +106,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"pushCard"]){
+        UITableViewCell *cell = (UITableViewCell*)sender;
         BACardViewController *card = segue.destinationViewController;
+        
     }
 
 }

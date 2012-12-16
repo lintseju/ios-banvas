@@ -44,11 +44,11 @@
 		CEC6C56B1679C2EF0064A634 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC6C56A1679C2EF0064A634 /* libiconv.dylib */; };
 		CECA43581660969C00EDA4E9 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CECA43571660969C00EDA4E9 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF0497FB165FAF7A0047262E /* BADataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0497FA165FAF7A0047262E /* BADataSource.m */; };
+		DF251392167DE08F00039A88 /* head@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF251391167DE08F00039A88 /* head@2x.png */; };
 		DF2D96181679116700CED61B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = DF2D96171679116700CED61B /* back.png */; };
 		DF2D961A1679141000CED61B /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DF2D96191679141000CED61B /* head.png */; };
 		DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1F416634B48001555BF /* BACardViewController.m */; };
 		DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1FA16635F39001555BF /* BATestCellViewController.m */; };
-		DFF1E1FF1663792D001555BF /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DFF1E1FE1663792D001555BF /* bg.jpg */; };
 		DFF1E20116637B59001555BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFF1E20016637B59001555BF /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,13 +132,13 @@
 		CECA43571660969C00EDA4E9 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		DF0497F9165FAF7A0047262E /* BADataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BADataSource.h; sourceTree = "<group>"; };
 		DF0497FA165FAF7A0047262E /* BADataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BADataSource.m; sourceTree = "<group>"; };
+		DF251391167DE08F00039A88 /* head@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head@2x.png"; sourceTree = "<group>"; };
 		DF2D96171679116700CED61B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		DF2D96191679141000CED61B /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head.png; sourceTree = "<group>"; };
 		DFF1E1F316634B48001555BF /* BACardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACardViewController.h; sourceTree = "<group>"; };
 		DFF1E1F416634B48001555BF /* BACardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACardViewController.m; sourceTree = "<group>"; };
 		DFF1E1F916635F39001555BF /* BATestCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATestCellViewController.h; sourceTree = "<group>"; };
 		DFF1E1FA16635F39001555BF /* BATestCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATestCellViewController.m; sourceTree = "<group>"; };
-		DFF1E1FE1663792D001555BF /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		DFF1E20016637B59001555BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -397,9 +397,9 @@
 		DFF1E1F216634AFE001555BF /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				DF251391167DE08F00039A88 /* head@2x.png */,
 				DF2D96191679141000CED61B /* head.png */,
 				DF2D96171679116700CED61B /* back.png */,
-				DFF1E1FE1663792D001555BF /* bg.jpg */,
 				DFF1E1F316634B48001555BF /* BACardViewController.h */,
 				DFF1E1F416634B48001555BF /* BACardViewController.m */,
 			);
@@ -497,7 +497,6 @@
 				CE628378165F9E4E00BD975E /* second.png in Resources */,
 				CE62837A165F9E4E00BD975E /* second@2x.png in Resources */,
 				CE67E7AA1661053800FC7EBD /* personData.txt in Resources */,
-				DFF1E1FF1663792D001555BF /* bg.jpg in Resources */,
 				CE3ADE85166F2EA900854362 /* banvas.conf in Resources */,
 				DF2D96181679116700CED61B /* back.png in Resources */,
 				DF2D961A1679141000CED61B /* head.png in Resources */,
@@ -505,6 +504,7 @@
 				CEC6C5531679872B0064A634 /* zbar-help.html in Resources */,
 				CEC6C5541679872B0064A634 /* zbar-helpicons.png in Resources */,
 				CEC6C5551679872B0064A634 /* zbar-samples.png in Resources */,
+				DF251392167DE08F00039A88 /* head@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

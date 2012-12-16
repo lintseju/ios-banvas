@@ -11,5 +11,6 @@
 #import "BADataSource.h"
 @interface BACardViewController : UIViewController
 
+@property (strong, nonatomic) NSString *userId;
 
 @end
