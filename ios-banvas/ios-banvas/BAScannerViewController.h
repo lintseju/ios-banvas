@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
+#import "BACardViewController.h"
 
 @interface BAScannerViewController : ZBarReaderViewController <ZBarReaderDelegate>
 

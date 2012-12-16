@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *thumbnailView;
+@property (strong, nonatomic) NSString *personID;
 
 @end

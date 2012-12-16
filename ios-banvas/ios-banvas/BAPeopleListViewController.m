@@ -98,6 +98,7 @@
     cellInfo = [listArray objectAtIndex:listIdx];
     personCell.nameLabel.text = [cellInfo valueForKey:@"name"];
     personCell.descriptionLabel.text = [cellInfo valueForKey:@"company"];
+    personCell.personID = [cellInfo valueForKey:@"id"];
     return cell;
 }
 
@@ -105,8 +106,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"pushCard"]){
-        UITableViewCell *cell = (UITableViewCell*)sender;
+    if([segue.identifier isEqualToString:@"pushToCard"]){
+        BAPeopleListViewCell *cell = (BAPeopleListViewCell*)sender;
+        NSLog(@"%@", cell.personID);
         BACardViewController *card = segue.destinationViewController;
         
     }

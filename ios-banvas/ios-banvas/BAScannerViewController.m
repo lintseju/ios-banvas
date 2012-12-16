@@ -47,9 +47,13 @@
 {
     id <NSFastEnumeration> syms = [info objectForKey: ZBarReaderControllerResults];
     for(ZBarSymbol *sym in syms){
-        NSLog(@"%@", sym.data);
+        //check url
+        //NSLog(@"%@", sym.data);
+        //ckeck url
         break;
     }
+    BACardViewController *card = [[BACardViewController alloc] init];
+    [self.navigationController pushViewController:card animated:YES];
 }
 
 @end
