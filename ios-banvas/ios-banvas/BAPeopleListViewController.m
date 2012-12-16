@@ -14,6 +14,8 @@
 
 @implementation BAPeopleListViewController
 
+static NSString *pictureFileType = @"jpg";
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +37,7 @@
 {
     [super viewDidLoad];
     //if([self.navigationController.viewControllers indexOfObject:self] == 0)
-        self.navigationItem.rightBarButtonItem = nil;
+        //self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,7 +101,23 @@
     personCell.nameLabel.text = [cellInfo valueForKey:@"name"];
     personCell.descriptionLabel.text = [cellInfo valueForKey:@"company"];
     personCell.personID = [cellInfo valueForKey:@"id"];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:[cellInfo valueForKey:@"pictureSmall"] ofType:pictureFileType];
+    personCell.imageView.image = [UIImage imageWithContentsOfFile:path];
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 #pragma For Segue
