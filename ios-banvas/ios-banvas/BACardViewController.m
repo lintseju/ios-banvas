@@ -66,6 +66,7 @@
 - (void)viewDidUnload {
     [self setPicture:nil];
     [self setName:nil];
+    [self setCompany:nil];
     [super viewDidUnload];
 }
 @end
