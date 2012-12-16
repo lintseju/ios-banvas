@@ -7,6 +7,7 @@
 //
 
 #import "BACardViewController.h"
+#import "BAPeopleListViewController.h"
 
 @interface BACardViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation BACardViewController
 
-extern static NSString* pictureFileType;
+//exterstatic NSString *pictureFileType = @"jpg";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
