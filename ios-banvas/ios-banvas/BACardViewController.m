@@ -14,6 +14,8 @@
 
 @implementation BACardViewController
 
+extern static NSString* pictureFileType;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,7 +36,10 @@
     
     NSDictionary *PersonInfo =  [[BADataSource data]getPersonInfo:self.userId];
     self.name.text = [PersonInfo valueForKey:@"name"];
-//    self.picture = [ UIImage init[PersonInfo valueForKey:@"picture"]]
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:[PersonInfo valueForKey:@"picture"] ofType:pictureFileType];
+    self.picture.image = [UIImage imageWithContentsOfFile:path];
+
     
   
 }
