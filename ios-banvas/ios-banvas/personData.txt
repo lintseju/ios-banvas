@@ -12,7 +12,7 @@
         "department": "資訊管理學系",
         "position": "學生"
     }],
-    "email":"kk@ntu.edu.tw"
+    "email":"kk@ntu.edu.tw",
     "picture": "369426_100000239887063_1678032759_n.jpg",
     "pictureSmall":"369426_100000239887063_1678032759_q.jpg"
 
@@ -41,6 +41,8 @@
     "fb":"xddd@fb.com",
     "twitter":"XDDDDDD",
     "phone_number":"0923456789",
+    "pictureSmall":"",
+    "picture":"",
     "timeline":[{
         "title":"打雜工",
         "description":"專業端茶水",

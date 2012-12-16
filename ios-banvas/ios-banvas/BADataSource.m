@@ -47,7 +47,7 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
         NSString *confString = [[NSString alloc] initWithContentsOfFile:configPath encoding:NSUTF8StringEncoding error:nil];
         configDic = [confString objectFromJSONString];
         
-        arrayOfPersonInList = [[NSArray alloc] initWithObjects:@"id",@"name", @"tag", @"company", @"department", @"position", nil];
+        arrayOfPersonInList = [[NSArray alloc] initWithObjects:@"id", @"pictureSmall", @"name", @"tag", @"company", @"department", @"position", nil];
         
         cache = [[NSCache alloc] init];
     }
