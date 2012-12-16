@@ -12,5 +12,8 @@
 @interface BACardViewController : UIViewController
 
 @property (strong, nonatomic) NSString *userId;
+@property (weak, nonatomic) IBOutlet UIImageView *picture;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+
 
 @end

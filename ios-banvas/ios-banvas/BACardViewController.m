@@ -30,6 +30,12 @@
     [self.view addSubview:customBackground];
     [self.view sendSubviewToBack:customBackground];
     
+    //get data by id
+    
+    NSDictionary *PersonInfo =  [[BADataSource data]getPersonInfo:self.userId];
+    self.name.text = [PersonInfo valueForKey:@"name"];
+//    self.picture = [ UIImage init[PersonInfo valueForKey:@"picture"]]
+    
   
 }
 
@@ -51,4 +57,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setPicture:nil];
+    [self setName:nil];
+    [super viewDidUnload];
+}
 @end

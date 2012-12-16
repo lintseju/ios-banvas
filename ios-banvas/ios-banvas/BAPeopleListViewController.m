@@ -110,7 +110,7 @@
         BAPeopleListViewCell *cell = (BAPeopleListViewCell*)sender;
         NSLog(@"%@", cell.personID);
         BACardViewController *card = segue.destinationViewController;
-        
+        card.userId = cell.personID;
     }
 
 }
