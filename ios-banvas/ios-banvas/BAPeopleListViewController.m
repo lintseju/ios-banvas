@@ -15,8 +15,6 @@
 
 @implementation BAPeopleListViewController
 
-static NSString *pictureFileType = @"jpg";
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

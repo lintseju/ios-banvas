@@ -15,6 +15,8 @@
 #import "BAPeopleListViewCell.h"
 #import "BACardViewController.h"
 
+static NSString *pictureFileType = @"jpg";
+
 @interface BAPeopleListViewController : UITableViewController
 
 @property (strong, nonatomic) NSString *displayName;
