@@ -14,10 +14,8 @@
 @property (strong, nonatomic) NSString *userId;
 @property (weak, nonatomic) IBOutlet UIImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *name;
-
 @property (weak, nonatomic) IBOutlet UILabel *company;
 @property (weak, nonatomic) IBOutlet UILabel *position;
-
 @property (weak, nonatomic) IBOutlet UILabel *department;
 
 @end

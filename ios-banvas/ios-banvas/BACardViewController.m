@@ -37,9 +37,13 @@
     
     NSDictionary *PersonInfo =  [[BADataSource data]getPersonInfo:self.userId];
     self.name.text = [PersonInfo valueForKey:@"name"];
-//    self.position 
+    self.position.text =[PersonInfo valueForKey:@"position"];
+    self.company.text = [PersonInfo valueForKey:@"company"];
+    self.department.text = [PersonInfo valueForKey:@"department"];
     NSString *path = [[NSBundle mainBundle] pathForResource:[PersonInfo valueForKey:@"picture"] ofType:pictureFileType];
     self.picture.image = [UIImage imageWithContentsOfFile:path];
+    
+    
 
     
   
