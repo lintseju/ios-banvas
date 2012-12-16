@@ -193,6 +193,7 @@
 		CE628343165F9E4D00BD975E = {
 			isa = PBXGroup;
 			children = (
+				DFF1E1F816635F19001555BF /* For test */,
 				CE628358165F9E4D00BD975E /* ios-banvas */,
 				CE628387165F9E4E00BD975E /* ios-banvasTests */,
 				CE628351165F9E4D00BD975E /* Frameworks */,
@@ -232,7 +233,6 @@
 				CEC6C556167989700064A634 /* CameraTab */,
 				CEC6C5331679872B0064A634 /* ZBarSDK */,
 				CE43A084166A4165007E6740 /* ListView */,
-				DFF1E1F816635F19001555BF /* For test */,
 				DFF1E1F216634AFE001555BF /* CardView */,
 				DFF1E1F0166340F4001555BF /* UIImages */,
 				CECA43541660964F00EDA4E9 /* JSONKit */,
@@ -427,6 +427,7 @@
 				DFF1E1FA16635F39001555BF /* BATestCellViewController.m */,
 			);
 			name = "For test";
+			path = "ios-banvas";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
