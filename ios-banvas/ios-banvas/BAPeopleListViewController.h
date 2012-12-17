@@ -14,12 +14,15 @@
 #import "BADataSource.h"
 #import "BAPeopleListViewCell.h"
 #import "BACardViewController.h"
+#import "BATagUpdateViewController.h"
 
 static NSString *pictureFileType = @"jpg";
+BOOL isNormalMode[2];
 
 @interface BAPeopleListViewController : UITableViewController
 
 @property (strong, nonatomic) NSString *displayName;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *reTagButton;
+- (IBAction)reTagButtonTapped:(id)sender;
 
 @end
