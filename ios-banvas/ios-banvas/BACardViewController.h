@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "BADataSource.h"
-@interface BACardViewController : UIViewController
+@interface BACardViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) NSString *userId;
 @property (weak, nonatomic) IBOutlet UIImageView *picture;
@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *department;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *DetailscrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @end

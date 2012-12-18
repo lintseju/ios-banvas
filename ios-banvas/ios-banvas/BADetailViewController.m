@@ -1,18 +1,18 @@
 //
-//  BADetailScrollViewController.m
+//  BADetailViewController.m
 //  ios-banvas
 //
-//  Created by Lucien on 12/12/18.
+//  Created by Lucien on 12/12/19.
 //  Copyright (c) 2012年 lintseju. All rights reserved.
 //
 
-#import "BADetailScrollViewController.h"
+#import "BADetailViewController.h"
 
-@interface BADetailScrollViewController ()
+@interface BADetailViewController ()
 
 @end
 
-@implementation BADetailScrollViewController
+@implementation BADetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
