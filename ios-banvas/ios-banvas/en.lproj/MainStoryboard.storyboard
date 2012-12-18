@@ -306,7 +306,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="wCf-21-d87">
                                 <rect key="frame" x="0.0" y="180" width="320" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <color key="backgroundColor" red="1" green="0.64705884459999996" blue="0.50196081400000003" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.97647064924240112" green="0.97647064924240112" blue="0.97647064924240112" alpha="1" colorSpace="deviceRGB"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.52549022436141968" green="0.91764712333679199" blue="0.87450987100601196" alpha="1" colorSpace="deviceRGB"/>
@@ -315,6 +315,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="DetailscrollView" destination="wCf-21-d87" id="mEc-dE-jRz"/>
                         <outlet property="company" destination="sZS-f6-hsu" id="8CQ-zj-cqR"/>
                         <outlet property="department" destination="vap-7i-sf1" id="OYW-nD-eRF"/>
                         <outlet property="name" destination="Gfe-Lh-yP4" id="TcN-Kz-qbk"/>
@@ -334,6 +335,7 @@
         <class className="BACardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BACardViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="DetailscrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="company" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="department" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="name" candidateClass="UILabel"/>

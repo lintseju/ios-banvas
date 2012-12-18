@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *position;
 @property (weak, nonatomic) IBOutlet UILabel *department;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *DetailscrollView;
+
 @end

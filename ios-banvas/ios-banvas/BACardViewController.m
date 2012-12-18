@@ -43,11 +43,17 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:[PersonInfo valueForKey:@"picture"] ofType:pictureFileType];
     self.picture.image = [UIImage imageWithContentsOfFile:path];
     
+    //Detail view init
+    self.DetailscrollView.contentSize = CGSizeMake(320.0f, 600.0f);
+    self.DetailscrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light.png"]];
     
-
-    
-  
+    self.DetailscrollView.showsHorizontalScrollIndicator = NO;
+    self.DetailscrollView.scrollEnabled = YES;
+    self.DetailscrollView.pagingEnabled = YES;
 }
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -73,6 +79,7 @@
     [self setCompany:nil];
     [self setPosition:nil];
     [self setDepartment:nil];
+    [self setDetailscrollView:nil];
     [super viewDidUnload];
 }
 @end
