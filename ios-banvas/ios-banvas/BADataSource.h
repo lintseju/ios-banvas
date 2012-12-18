@@ -13,6 +13,21 @@
 //Every people must have it's own tag!
 //No category please assign "未分類"
 static NSString *noneCategory = @"未分類";
+static NSString *urlString = @"http://banvas-dev.herokuapp.com/";
+
+//Configure filename
+static NSString *configName = @"banvas";
+static NSString *configType = @"conf";
+//DB filename
+static NSString *dbFileName = @"personData";
+static NSString *dbFileType = @"txt";
+
+//cache keys
+const static NSString *BADataSourceCacheKeyForPersonList = @"BADataSource.Cache.PersonList";
+const static NSString *BADataSourceCacheKeyForTagList = @"BADataSource.Cache.TagList";
+static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person.%@";
+static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@";
+static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color";
 
 @interface BADataSource : NSObject{
     NSArray* dbFileArray;
@@ -21,6 +36,8 @@ static NSString *noneCategory = @"未分類";
 }
 
 +(BADataSource*) data;
++(NSString*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
+
 - (void)refresh;
 - (void)cleanCache;
 
@@ -34,6 +51,7 @@ static NSString *noneCategory = @"未分類";
 
 //server side
 -(Boolean) refreshData:(NSString*)data;
+-(Boolean) login:(NSString*)account andPassword:(NSString*)password;
 
 //For scan class
 -(Boolean) createPersonByPersonID:(NSString*) personID;

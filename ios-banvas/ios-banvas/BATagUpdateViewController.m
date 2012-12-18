@@ -67,11 +67,13 @@ static NSArray *colorList;
     colorList = [[NSArray alloc] initWithObjects:@"Black", @"Dark Gray", @"Light Gray", @"Gray", @"Red", @"Green", @"Blue",\
                  @"Cyan", @"Yellow", @"Magenta", @"Orange", @"Purple", @"Brown", nil];
     //update tag
-    if(self.tagName != nil){
-        self.navigationController.title = @"更新分類";
-        self.textInput.text = self.tagName;
+    if(self.personName != nil){
+        self.navigationItem.title = @"重新分類";
+        self.textInput.text = self.personName;
         self.textInput.enabled = false;
     }
+    self.textInput.returnKeyType = UIReturnKeyDone;
+    self.textInput.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,6 +99,12 @@ static NSArray *colorList;
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 #pragma For UIPickerView Delegate
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -106,11 +114,17 @@ static NSArray *colorList;
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
+    if(self.personName != nil){
+        return [[[BADataSource data] getTagList] count];
+    }
     return [colorList count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
+    if(self.personName != nil){
+        return [[[BADataSource data] getTagList] objectAtIndex:row];
+    }
     return [colorList objectAtIndex:row];
 }
 

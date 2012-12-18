@@ -91,13 +91,12 @@
     NSDictionary *cellInfo;
     BAPeopleListViewCell *personCell = (BAPeopleListViewCell*)cell;
     if([self.navigationController.viewControllers indexOfObject:self] == 1){
-        [personCell.coloredTag setBackgroundColor:[[BADataSource data] getColorOfTag:self.displayName]];
         listArray = [[BADataSource data] getPersonListByTag:self.displayName];
     }else{
-        [personCell.coloredTag setBackgroundColor:[UIColor whiteColor]];
         listArray = [[BADataSource data] getPersonList];
     }
     cellInfo = [listArray objectAtIndex:listIdx];
+    [personCell.coloredTag setBackgroundColor:[[BADataSource data] getColorOfTag:[cellInfo valueForKey:@"tag"]]];
     personCell.nameLabel.text = [cellInfo valueForKey:@"name"];
     personCell.descriptionLabel.text = [cellInfo valueForKey:@"company"];
     personCell.personID = [cellInfo valueForKey:@"id"];
@@ -113,54 +112,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
     NSUInteger modeIdx = [self.navigationController.viewControllers indexOfObject:self];
 
-    if(!isNormalMode[modeIdx]){
-        BATagUpdateViewController *nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tagUpdateVIew"];
-        [self.navigationController pushViewController:nextViewController animated:YES];
+    int listIdx = indexPath.row;
+    NSArray *listArray;
+    if([self.navigationController.viewControllers indexOfObject:self] == 1){
+        listArray = [[BADataSource data] getPersonListByTag:self.displayName];
     }else{
-        BACardViewController *nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CardView"];
-        int listIdx = indexPath.row;
-        NSArray *listArray;
-        if([self.navigationController.viewControllers indexOfObject:self] == 1){
-            listArray = [[BADataSource data] getPersonListByTag:self.displayName];
-        }else{
-            listArray = [[BADataSource data] getPersonList];
-        }
-        NSDictionary *cellInfo = [listArray objectAtIndex:listIdx];
-        nextViewController.userId = [cellInfo valueForKey:@"id"];
-        [self.navigationController pushViewController:nextViewController animated:YES];
+        listArray = [[BADataSource data] getPersonList];
     }
-}
-
-#pragma For Segue
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    /*NSUInteger modeIdx = [self.navigationController.viewControllers indexOfObject:self];
-    if(isNormalMode[modeIdx] && [segue.identifier isEqualToString:@"pushToCard"]){
-        BAPeopleListViewCell *cell = (BAPeopleListViewCell*)sender;
-        BACardViewController *card = segue.destinationViewController;
-        card.userId = cell.personID;
-    }*/
-
+    NSDictionary *cellInfo = [listArray objectAtIndex:listIdx];
+    
+    UITableViewController *nextViewController;
+    if(!isNormalMode[modeIdx]){
+        nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tagUpdateVIew"];
+        BATagUpdateViewController *tmp = (BATagUpdateViewController*)nextViewController;
+        tmp.personName = [cellInfo valueForKey:@"name"];
+        tmp.personID = [cellInfo valueForKey:@"id"];
+    }else{
+        nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CardView"];
+        
+        BACardViewController *tmp = (BACardViewController*)nextViewController;
+        tmp.userId = [cellInfo valueForKey:@"id"];
+    }
+    [self.navigationController pushViewController:nextViewController animated:YES];
 }
 
 - (IBAction)reTagButtonTapped:(id)sender{
-    NSLog(@"%@", self.reTagButton.title);
+    //NSLog(@"%@", self.reTagButton.title);
     NSUInteger modeIdx = [self.navigationController.viewControllers indexOfObject:self];
     if(isNormalMode[modeIdx]){
-        //self.reTagButton.title = @"完成";
+        self.reTagButton.title = @"完成";
         isNormalMode[modeIdx] = false;
     }else{
-        //self.reTagButton.title = @"重新分類";
+        self.reTagButton.title = @"重新分類";
         isNormalMode[modeIdx] = true;
     }
 }

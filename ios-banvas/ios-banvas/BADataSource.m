@@ -13,21 +13,6 @@
 //data arrays
 static NSArray *arrayOfPersonInList;
 
-//Configure filename
-static NSString *configName = @"banvas";
-static NSString *configType = @"conf";
-//DB filename
-static NSString *dbFileName = @"personData";
-static NSString *dbFileType = @"txt";
-
-//cache keys
-const static NSString *BADataSourceCacheKeyForPersonList = @"BADataSource.Cache.PersonList";
-const static NSString *BADataSourceCacheKeyForTagList = @"BADataSource.Cache.TagList";
-static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person.%@";
-static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@";
-static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color";
-
-
 +(BADataSource*) data
 {
     static dispatch_once_t once;
@@ -40,12 +25,17 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 
 - (id)init {
     if (self = [super init]) {
+        //read local data
         NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
         NSString *dbString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         dbFileArray = [dbString objectFromJSONString];
+        if(dbFileArray == nil)
+            NSLog(@"Read %@.%@ error!!!", dbFileName, dbFileType);
         NSString *configPath = [[NSBundle mainBundle] pathForResource:configName ofType:configType];
         NSString *confString = [[NSString alloc] initWithContentsOfFile:configPath encoding:NSUTF8StringEncoding error:nil];
         configDic = [confString objectFromJSONString];
+        if(configDic == nil)
+            NSLog(@"Read %@.%@ error!!!", configName, configType);
         
         arrayOfPersonInList = [[NSArray alloc] initWithObjects:@"id", @"pictureSmall", @"name", @"tag", @"company", @"department", @"position", nil];
         
@@ -167,6 +157,31 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 #pragma mark - ServerSide
 
 -(Boolean) refreshData:(NSString*)data
+{
+    return YES;
+}
+
+//URLString is like "http://xxx.xxx.xx.xxx"
+//content is what you want to sent, check setHTTPBody in detail
+//method is like "POST", "GET"
+//encoding is string encoding..
+//return value is server return in string format
++(NSString*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSURL *url = [[NSURL alloc] initWithString:URLString];
+    [request setURL:url];
+    [request setHTTPMethod:method];
+    [request setHTTPBody:[content dataUsingEncoding:encoding]];
+    NSError *error = nil;
+    NSURLResponse *response = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if(error != nil)
+        NSLog(@"getRequestString response:%@ and error: %@", response, error);
+    return [[NSString alloc] initWithData:data encoding:encoding];
+}
+
+-(Boolean) login:(NSString*)account andPassword:(NSString*)password
 {
     return YES;
 }

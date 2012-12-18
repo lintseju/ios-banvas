@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BADataSource.h"
 
-@interface BATagUpdateViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface BATagUpdateViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *textInput;
 @property (strong, nonatomic) IBOutlet UIPickerView *colorSelect;
-@property (strong, nonatomic) NSString *tagName;
+@property (strong, nonatomic) NSString *personName;
+@property (strong, nonatomic) NSString *personID;
 
 + (UIColor*)getColorByIndex:(NSInteger)colorListIndex;
 
