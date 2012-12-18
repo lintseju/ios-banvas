@@ -28,10 +28,10 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    UIImageView *customBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head.png"]];
-    [self.view addSubview:customBackground];
-    [self.view sendSubviewToBack:customBackground];
+//    [super viewDidLoad];
+//    UIImageView *customBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head.png"]];
+//    [self.view addSubview:customBackground];
+//    [self.view sendSubviewToBack:customBackground];
     
     //get data by id
     
