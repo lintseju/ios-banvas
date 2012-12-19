@@ -53,8 +53,8 @@
 		DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1F416634B48001555BF /* BACardViewController.m */; };
 		DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1FA16635F39001555BF /* BATestCellViewController.m */; };
 		DFF1E20116637B59001555BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFF1E20016637B59001555BF /* QuartzCore.framework */; };
-		DFFD7AEF1680E46C0080EAED /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFD7AEE1680E46C0080EAED /* SMPageControl.m */; };
 		DFFD7AF21680EB1A0080EAED /* BADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFD7AF11680EB1A0080EAED /* BADetailViewController.m */; };
+		DFFD7B091681295C0080EAED /* SDSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFD7B081681295C0080EAED /* SDSegmentedControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,10 +148,10 @@
 		DFF1E1F916635F39001555BF /* BATestCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATestCellViewController.h; sourceTree = "<group>"; };
 		DFF1E1FA16635F39001555BF /* BATestCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATestCellViewController.m; sourceTree = "<group>"; };
 		DFF1E20016637B59001555BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DFFD7AED1680E46C0080EAED /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
-		DFFD7AEE1680E46C0080EAED /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		DFFD7AF01680EB1A0080EAED /* BADetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BADetailViewController.h; sourceTree = "<group>"; };
 		DFFD7AF11680EB1A0080EAED /* BADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BADetailViewController.m; sourceTree = "<group>"; };
+		DFFD7B071681295C0080EAED /* SDSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSegmentedControl.h; sourceTree = "<group>"; };
+		DFFD7B081681295C0080EAED /* SDSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSegmentedControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +237,7 @@
 		CE628358165F9E4D00BD975E /* ios-banvas */ = {
 			isa = PBXGroup;
 			children = (
-				DFFD7AEC1680E46C0080EAED /* SMPageControl */,
+				DFFD7B061681295C0080EAED /* SDSegmentedControl */,
 				DF251398167DEEF100039A88 /* Picture */,
 				CEC6C556167989700064A634 /* CameraTab */,
 				CEC6C5331679872B0064A634 /* ZBarSDK */,
@@ -442,13 +442,13 @@
 			path = "ios-banvas";
 			sourceTree = "<group>";
 		};
-		DFFD7AEC1680E46C0080EAED /* SMPageControl */ = {
+		DFFD7B061681295C0080EAED /* SDSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
-				DFFD7AED1680E46C0080EAED /* SMPageControl.h */,
-				DFFD7AEE1680E46C0080EAED /* SMPageControl.m */,
+				DFFD7B071681295C0080EAED /* SDSegmentedControl.h */,
+				DFFD7B081681295C0080EAED /* SDSegmentedControl.m */,
 			);
-			path = SMPageControl;
+			path = SDSegmentedControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -589,8 +589,8 @@
 				CE3ADE87166F77A900854362 /* BAPeopleCategoryViewController.m in Sources */,
 				CEC6C52E1679821E0064A634 /* BATagUpdateViewController.m in Sources */,
 				CEC6C5631679BF720064A634 /* BAScannerViewController.m in Sources */,
-				DFFD7AEF1680E46C0080EAED /* SMPageControl.m in Sources */,
 				DFFD7AF21680EB1A0080EAED /* BADetailViewController.m in Sources */,
+				DFFD7B091681295C0080EAED /* SDSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *position;
 @property (weak, nonatomic) IBOutlet UILabel *department;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *DetailscrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *test;
 
 @end
