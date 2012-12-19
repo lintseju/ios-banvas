@@ -10,10 +10,14 @@
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 //Every people must have it's own tag!
 //No category please assign "未分類"
 static NSString *noneCategory = @"未分類";
-static NSString *urlString = @"http://banvas-dev.herokuapp.com/";
+static NSString *URLString = @"http://banvas-dev.herokuapp.com";
 
 //Configure filename
 static NSString *configName = @"banvas";
@@ -30,13 +34,16 @@ static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@"
 static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color";
 
 @interface BADataSource : NSObject{
-    NSArray* dbFileArray;
-    NSDictionary *configDic;
+    NSMutableArray* dbFileArray;
+    NSMutableDictionary *configDic;
     NSCache* cache;
+    NSString *userID;
+    NSString *token;
 }
 
 +(BADataSource*) data;
-+(NSString*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
++(NSDictionary*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
++(NSDictionary*) getRequestStringFromURL:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
 
 - (void)refresh;
 - (void)cleanCache;
@@ -63,6 +70,6 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 
 -(Boolean) updatePersonByPersonID:(NSString*) personID andTag:(NSString*)tag;
 -(Boolean) deletePersonByPersonID:(NSString*) personID;
--(Boolean) readPersonByPersonID:(NSString*) personID;
+-(NSDictionary*) readPersonByPersonID:(NSString*) personID;
 
 @end

@@ -28,8 +28,8 @@ extern NSString *noneCategory;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@",[BADataSource getRequestString:@"http://banvas-dev.herokuapp.com/lintseju/status" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
-    NSLog(@"%@",[BADataSource getRequestString:@"http://banvas-dev.herokuapp.com/lintseju/collection" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
+    //NSLog(@"%@",[BADataSource getRequestString:@"http://banvas-dev.herokuapp.com/lintseju/status" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
+    //NSLog(@"%@",[BADataSource getRequestString:@"http://banvas-dev.herokuapp.com/lintseju/collection" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
 
 
     // Uncomment the following line to preserve selection between presentations.
@@ -38,7 +38,12 @@ extern NSString *noneCategory;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //NSLog(@"%@",[BADataSource getRequestStringFromURL:@"http://banvas-dev.herokuapp.com/lintseju/status" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
-    [[BADataSource data] login:@"lintseju@cmlab.csie.ntu.edu.tw" andPassword:@"123"];
+    //[[BADataSource data] login:@"lintseju@cmlab.csie.ntu.edu.tw" andPassword:@"123"];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

@@ -12,6 +12,7 @@
 
 //data arrays
 static NSArray *arrayOfPersonInList;
+static NSArray *rgba;
 
 +(BADataSource*) data
 {
@@ -26,18 +27,29 @@ static NSArray *arrayOfPersonInList;
 - (id)init {
     if (self = [super init]) {
         //read local data
+        
         NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
         NSString *dbString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-        dbFileArray = [dbString objectFromJSONString];
-        if(dbFileArray == nil)
+        NSArray *tmpArray = [dbString mutableObjectFromJSONString];
+        if(tmpArray == nil)
             NSLog(@"Read %@.%@ error!!!", dbFileName, dbFileType);
+        //check activity
+        dbFileArray = [[NSMutableArray alloc] init];
+        for(NSDictionary *obj in tmpArray){
+            if([[obj valueForKey:@"active"] isEqualToString:@"y"]){
+                [dbFileArray addObject:obj];
+            }
+        }
+
         NSString *configPath = [[NSBundle mainBundle] pathForResource:configName ofType:configType];
         NSString *confString = [[NSString alloc] initWithContentsOfFile:configPath encoding:NSUTF8StringEncoding error:nil];
-        configDic = [confString objectFromJSONString];
+        configDic = [confString mutableObjectFromJSONString];
         if(configDic == nil)
             NSLog(@"Read %@.%@ error!!!", configName, configType);
         
+        //[self refresh];
         arrayOfPersonInList = [[NSArray alloc] initWithObjects:@"id", @"pictureSmall", @"name", @"tag", @"company", @"department", @"position", nil];
+        rgba = [[NSArray alloc] initWithObjects:@"r", @"g", @"b", @"a", nil];
         
         cache = [[NSCache alloc] init];
     }
@@ -45,10 +57,6 @@ static NSArray *arrayOfPersonInList;
 }
 
 - (void)refresh {
-    NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
-    NSString *dbString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    dbFileArray = [dbString objectFromJSONString];
-    
     [self cleanCache];
 }
 
@@ -166,59 +174,174 @@ static NSArray *arrayOfPersonInList;
 //method is like "POST", "GET"
 //encoding is string encoding..
 //return value is server return in string format
-+(NSString*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
++(NSDictionary*) getRequestStringFromURL:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSURL *url = [[NSURL alloc] initWithString:URLString];
     [request setURL:url];
     [request setHTTPMethod:method];
     [request setHTTPBody:[content dataUsingEncoding:encoding]];
+    NSLog(@"request = %@", request);
     NSError *error = nil;
     NSURLResponse *response = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     if(error != nil)
         NSLog(@"getRequestString response:%@ and error: %@", response, error);
-    return [[NSString alloc] initWithData:data encoding:encoding];
+    NSDictionary *msgDic = [[[NSString alloc] initWithData:data encoding:encoding] objectFromJSONString];
+    if(msgDic == nil)
+        NSLog(@"Error reading msgDic as JSON format in getRequestString.");
+    return msgDic;
+}
+
++(NSDictionary*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding
+{
+    return [BADataSource getRequestStringFromURL:URLString withContent:content withMethod:method withEncoding:encoding];
 }
 
 -(Boolean) login:(NSString*)account andPassword:(NSString*)password
 {
+    NSString *loginURL = [NSString stringWithFormat:@"%@/login", URLString];
+    NSString *loginMsg = [NSString stringWithFormat:@"{\"email\":\"%@\", \"password\":\"%@\"}", account, password];
+    NSDictionary *serverMsg = [BADataSource getRequestStringFromURL:loginURL withContent:loginMsg withMethod:@"POST" withEncoding:NSUTF8StringEncoding];
+    if([serverMsg valueForKey:@"err"] != 0){
+        NSLog(@"Error %@ occurred in login!", [serverMsg valueForKey:@"err"]);
+        return NO;
+    }
+    userID = [serverMsg valueForKey:@"id"];
+    token = [serverMsg valueForKey:@"token"];
     return YES;
 }
 
 -(Boolean) addCategory:(NSString*)categoryName andColor:(UIColor*)color
 {
+    const CGFloat *components = CGColorGetComponents([color CGColor]);
+    NSMutableArray *tag = [configDic valueForKey:@"tag"];
+    NSMutableDictionary *newTag = [[NSMutableDictionary alloc] init];
+    for(int i = 0;i < 4;i++){
+        NSNumber *tmp = [[NSNumber alloc] initWithDouble:components[i]];
+        [newTag setObject:tmp forKey:rgba[i]];
+    }
+    //future work: check name collision
+    [newTag setObject:categoryName forKey:@"name"];
+    [tag addObject:newTag];
+    [configDic removeObjectForKey:@"tag"];
+//    NSLog(@"%@", [configDic JSONString]);
+    [configDic setObject:tag forKey:@"tag"];
+//    NSLog(@"%@", [configDic JSONString]);
+
+    [self refresh];
     return YES;
 }
 
 -(Boolean) deleteCategory:(NSString*)categoryName
 {
+    NSUInteger index;
+    NSMutableArray *tagArray = [configDic valueForKey:@"tag"];
+    for(NSMutableDictionary *obj in tagArray){
+        if([[obj valueForKey:@"name"] isEqualToString:categoryName]){
+            index = [tagArray indexOfObject:obj];
+            break;
+        }
+    }
+    [tagArray removeObjectAtIndex:index];
+//    [configDic removeObjectForKey:@"tag"];
+    [configDic setObject:tagArray forKey:@"tag"];
+    [self refresh];
     return YES;
 }
 
 -(Boolean) updateTagColor:(NSString*)tag toColor:(UIColor*)color
 {
+    NSUInteger index;
+    NSMutableArray *tagArray = [configDic valueForKey:@"tag"];
+    const CGFloat *components = CGColorGetComponents([color CGColor]);
+    NSMutableDictionary *tagToUpdate;
+    for(NSMutableDictionary *obj in tagArray){
+        if([[obj valueForKey:@"name"] isEqualToString:tag]){
+            index = [tagArray indexOfObject:obj];
+            tagToUpdate = [[NSMutableDictionary alloc] initWithDictionary:obj];
+            break;
+        }
+    }
+    for(int i = 0;i < 4;i++){
+        NSNumber *tmp = [[NSNumber alloc] initWithDouble:components[i]];
+        [tagToUpdate setObject:tmp forKey:rgba[i]];
+    }
+    [tagArray removeObjectAtIndex:index];
+    [tagArray addObject:tagToUpdate];
+    //    [configDic removeObjectForKey:@"tag"];
+    [configDic setObject:tagArray forKey:@"tag"];
+    [self refresh];
     return YES;
 }
 
+//offline only now
 -(Boolean) createPersonByPersonID:(NSString*) personID
 {
+    NSUInteger index;
+    NSMutableDictionary *personToUpdate;
+    for(NSMutableDictionary *person in dbFileArray){
+        if([[person valueForKey:@"id"] isEqualToString:personID]){
+            index = [dbFileArray indexOfObject:person];
+            personToUpdate = [[NSMutableDictionary alloc] initWithDictionary:person];
+            break;
+        }
+    }
+    [personToUpdate setObject:@"y" forKey:@"active"];
+    [dbFileArray removeObjectAtIndex:index];
+    [dbFileArray addObject:personToUpdate];
+    [self refresh];
     return YES;
 }
 
 -(Boolean) updatePersonByPersonID:(NSString*) personID andTag:(NSString*)tag
 {
+    NSUInteger index;
+    NSMutableDictionary *personWithNewTag;
+    for(NSMutableDictionary *person in dbFileArray){
+        if([[person valueForKey:@"id"] isEqualToString:personID]){
+            index = [dbFileArray indexOfObject:person];
+            personWithNewTag = [[NSMutableDictionary alloc] initWithDictionary:person];
+            break;
+        }
+    }
+    [personWithNewTag setObject:tag forKey:@"tag"];
+    [dbFileArray removeObjectAtIndex:index];
+    [dbFileArray addObject:personWithNewTag];
+    [self refresh];
     return YES;
 }
 
+//offline only now
 -(Boolean) deletePersonByPersonID:(NSString*) personID
 {
+    NSUInteger index;
+    NSMutableDictionary *personToUpdate;
+    for(NSMutableDictionary *person in dbFileArray){
+        if([[person valueForKey:@"id"] isEqualToString:personID]){
+            index = [dbFileArray indexOfObject:person];
+            personToUpdate = [[NSMutableDictionary alloc] initWithDictionary:person];
+            break;
+        }
+    }
+    [personToUpdate setObject:@"n" forKey:@"active"];
+    [dbFileArray removeObjectAtIndex:index];
+    [dbFileArray addObject:personToUpdate];
+    [self refresh];
     return YES;
 }
 
--(Boolean) readPersonByPersonID:(NSString*) personID
+-(NSDictionary*) readPersonByPersonID:(NSString*) personID
 {
-    return YES;
+    NSString *statusURL = [NSString stringWithFormat:@"%@/%@/status", URLString, personID];
+    NSString *statusMsg = nil;//[NSString stringWithFormat:@"{\"token\"=\"%@\"}", token];
+    NSDictionary *serverMsg = [BADataSource getRequestStringFromURL:statusURL withContent:statusMsg withMethod:@"POST" withEncoding:NSUTF8StringEncoding];
+    if([serverMsg valueForKey:@"err"] != 0){
+        NSLog(@"Error %@ occurred in login!", [serverMsg valueForKey:@"err"]);
+        return nil;
+    }
+    NSDictionary *returnData = [serverMsg valueForKey:@"data"];
+    return returnData;
 }
 
 @end

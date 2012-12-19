@@ -92,11 +92,15 @@ static NSArray *colorList;
     [self.navigationController popViewControllerAnimated:TRUE];
     UIButton* senderButton = (UIButton*)sender;
     //好
-    if(senderButton.tag == 1){
+    if(senderButton.tag == 1 && self.personName == nil){
         UIColor *tagColorNow = [BATagUpdateViewController getColorByIndex:[self.colorSelect selectedRowInComponent:0]];
         if([self.textInput.text length] > 0)
             [[BADataSource data] addCategory:self.textInput.text andColor:tagColorNow];
+    }else if(senderButton.tag == 1){
+        NSString *newTag = [[[BADataSource data] getTagList] objectAtIndex:[self.colorSelect selectedRowInComponent:0]];
+        [[BADataSource data] updatePersonByPersonID:self.personID andTag:newTag];
     }
+    //NSLog(@"%@", [[BADataSource data] getTagList]);
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -116,6 +120,7 @@ static NSArray *colorList;
 {
     if(self.personName != nil){
         return [[[BADataSource data] getTagList] count];
+        //return [[BADataSource getTagList] count];
     }
     return [colorList count];
 }
@@ -124,6 +129,7 @@ static NSArray *colorList;
 {
     if(self.personName != nil){
         return [[[BADataSource data] getTagList] objectAtIndex:row];
+        //return [[BADataSource getTagList] objectAtIndex:row];
     }
     return [colorList objectAtIndex:row];
 }
