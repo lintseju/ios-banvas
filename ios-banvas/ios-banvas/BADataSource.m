@@ -57,6 +57,12 @@ static NSArray *rgba;
 }
 
 - (void)refresh {
+    NSString *configPath = [[NSBundle mainBundle] pathForResource:configName ofType:configType];
+    [[configDic JSONString] writeToFile:configPath atomically:NO encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
+    [[dbFileArray JSONString] writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:nil];
+    
     [self cleanCache];
 }
 
@@ -201,14 +207,16 @@ static NSArray *rgba;
 -(Boolean) login:(NSString*)account andPassword:(NSString*)password
 {
     NSString *loginURL = [NSString stringWithFormat:@"%@/login", URLString];
-    NSString *loginMsg = [NSString stringWithFormat:@"{\"email\":\"%@\", \"password\":\"%@\"}", account, password];
+    NSString *loginMsg = [NSString stringWithFormat:@"email=%@&password=%@", account, password];
     NSDictionary *serverMsg = [BADataSource getRequestStringFromURL:loginURL withContent:loginMsg withMethod:@"POST" withEncoding:NSUTF8StringEncoding];
-    if([serverMsg valueForKey:@"err"] != 0){
+//    NSLog(@"%@", [[serverMsg valueForKey:@"err"] class]);
+    if([[serverMsg valueForKey:@"err"] intValue] != 0){
         NSLog(@"Error %@ occurred in login!", [serverMsg valueForKey:@"err"]);
         return NO;
     }
     userID = [serverMsg valueForKey:@"id"];
     token = [serverMsg valueForKey:@"token"];
+//    NSLog(@"%@, %@", userID, token);
     return YES;
 }
 
