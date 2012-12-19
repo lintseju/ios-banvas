@@ -11,8 +11,15 @@
         "company": "國立台灣大學",
         "department": "資訊管理學系",
         "position": "學生"
+    },{
+       "company": "國立台灣大學",
+       "department": "網路與多媒體研究所",
+       "position": "學生" 
     }],
     "email":"kk@ntu.edu.tw",
+    "phone_number":"0922190123",
+    "fb":"lucien.leee",
+    "twitter":"",
     "picture": "369426_100000239887063_1678032759_n",
     "pictureSmall":"369426_100000239887063_1678032759_q",
     "active":"y"
@@ -26,7 +33,7 @@
     "department": "資訊工程學研究所",
     "position": "學生",
     "about_me": "念先帝創業未半中道崩殂",
-    "skill":["python", "c/c++"],
+    "skill":["python", "c++"],
     "resume":[{
         "company": "國立台灣大學",
         "department": "資訊工程學研究所",
@@ -38,7 +45,7 @@
     }
     ],
     "email":"xd@ntu.edu.tw",
-    "fb":"xddd@fb.com",
+    "fb":"jigfopsda",
     "twitter":"XDDDDDD",
     "phone_number":"0923456789",
     "pictureSmall":"",
@@ -57,7 +64,7 @@
         "thumbnial":"nil"
     }
     ],
-    "active":"n"
+    "active":"y"
 },
 {
 }]

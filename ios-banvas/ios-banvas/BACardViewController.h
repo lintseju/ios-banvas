@@ -20,6 +20,6 @@
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *DetailscrollView;
-@property (weak, nonatomic) IBOutlet UILabel *test;
+
 
 @end
