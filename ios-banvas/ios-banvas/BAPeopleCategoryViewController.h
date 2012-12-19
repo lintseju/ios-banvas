@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "BADataSource.h"
 #import "BAPeopleListViewController.h"
+#import "JSONKit.h"
 
 @interface BAPeopleCategoryViewController : UITableViewController
+- (id)objectFromJSONString;
+- (id)objectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
+- (id)objectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags error:(NSError **)error;
+- (id)mutableObjectFromJSONString;
+- (id)mutableObjectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
+- (id)mutableObjectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags error:(NSError **)error;
 
 @end

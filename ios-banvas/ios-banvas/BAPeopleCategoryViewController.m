@@ -28,6 +28,9 @@ extern NSString *noneCategory;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"%@",[BADataSource getRequestString:@"http://banvas-dev.herokuapp.com/lintseju/status" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
+    NSLog(@"%@",[BADataSource getRequestString:@"http://banvas-dev.herokuapp.com/lintseju/collection" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -49,6 +52,7 @@ extern NSString *noneCategory;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
