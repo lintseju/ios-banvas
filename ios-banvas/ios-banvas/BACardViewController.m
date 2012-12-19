@@ -46,60 +46,10 @@
     //Detail view 設定
     self.DetailscrollView.contentSize = CGSizeMake(320.0f, 600.0f);
     self.DetailscrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light.png"]];
-//    [self.view sendSubviewToBack:self.DetailscrollView];
+
+    [self updateSelectedSegmentLabel];
     
-//    self.DetailscrollView.showsHorizontalScrollIndicator = NO;
-//    self.DetailscrollView.scrollEnabled = YES;
-//    self.DetailscrollView.pagingEnabled = YES;
-//    [self.DetailscrollView setDelegate:self];
-//    
-//    //page control
-//    [self.pageControl setNumberOfPages:4];
-//    [self.pageControl setCurrentPage:0];
-//    
-//    //every detail view set size
-//    CGFloat width, height;
-//    width = self.DetailscrollView.frame.size.width;
-//    height = self.DetailscrollView.frame.size.height;
-//    [self.DetailscrollView setContentSize:CGSizeMake(width * 4, height)];
-//    
-////    UIScrollView 
-//    for (int i=0; i!=self.pageControl.numberOfPages; i++) {
-//        CGRect frame = CGRectMake(width*i, 0, width, height);
-//        UIScrollView *view = [[UIScrollView alloc]initWithFrame:frame];
-//        view.scrollEnabled = YES;
-//        view.showsHorizontalScrollIndicator = NO;
-//        
-//        CGFloat r, g ,b;
-//        r = (arc4random() % 10) / 10.0;
-//        g = (arc4random() % 10) / 10.0;
-//        b = (arc4random() % 10) / 10.0;
-//        [view setBackgroundColor:[UIColor colorWithRed:r green:g blue:b alpha:0.8]];
-//        
-//        //使用QuartzCore.framework替UIView加上圓角
-//        [view.layer setCornerRadius:15.0];
-//        UILabel *text = [[UILabel alloc]initWithFrame:CGRectMake(30.0f, 30.0f, 150.0f, 80.0f)];text.text = [@"view" stringByAppendingFormat:@"%d", i];
-//        [view addSubview:text];
-//        [self.DetailscrollView addSubview:view];
-//    }
-//    
-//}
-//
-//- (void)scrollViewDidScroll:(UIScrollView *)sender {
-//    CGFloat width = self.DetailscrollView.frame.size.width;
-//    NSInteger currentPage = ((self.DetailscrollView.contentOffset.x - width / 2) / width) + 1;
-//    [self.pageControl setCurrentPage:currentPage];
-//}
-//
-//- (IBAction)changeCurrentPage:(UIPageControl *)sender {
-//    NSInteger page = self.pageControl.currentPage;
-//    
-//    CGFloat width, height;
-//    width = self.DetailscrollView.frame.size.width;
-//    height = self.DetailscrollView.frame.size.height;
-//    CGRect frame = CGRectMake(width*page, 0, width, height);
-//    
-//    [self.DetailscrollView scrollRectToVisible:frame animated:YES];
+    
 }
 
 - (void)updateSelectedSegmentLabel
@@ -109,11 +59,6 @@
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
         {
-            for (UIView *view in [self.DetailscrollView subviews])
-            {
-                if ( ![view isKindOfClass:[UISegmentedControl class]])
-                    [view removeFromSuperview];
-            }
             NSString* content = [PersonInfo valueForKey:@"about_me"];
             [self drawAboutView:content];
         }
@@ -121,8 +66,8 @@
         
         case 1:
         {
-           NSString* content = [PersonInfo valueForKey:@"about_me"];
-            NSLog(@"TT");
+           NSArray* content = [PersonInfo valueForKey:@"resume"];
+            [self drawResumeView:content];
             
         }
         break;
@@ -146,10 +91,43 @@
 
 -(void) drawAboutView:(NSString*)content{
     
-    UILabel *about =[[UILabel alloc] initWithFrame:CGRectMake(30.0f, 30.0f, 150.0f, 80.0f)];
-    about.text =content;
-    [self.DetailscrollView addSubview:about
-     ];
+    //set title
+    UILabel *title =[[UILabel alloc] initWithFrame:CGRectMake(30.0f, 50.0f, 100.0f, 50.0f)];
+    title.text = @"關於我";
+    title.numberOfLines =1;
+    [title setFont:[UIFont fontWithName:@"HoeflerText-Black" size:22]];
+    [title setTextColor:[UIColor colorWithRed:0/255.0 green:184/255.0 blue:200/255.0 alpha:1]];
+     [self.DetailscrollView addSubview:title];
+    [title setBackgroundColor:[UIColor clearColor]];
+    
+    UILabel *about =[[UILabel alloc] initWithFrame:CGRectMake(30.0f, 100.0f, 260.0f, 80.0f)];
+    about.numberOfLines = 0;
+    about.text = content;
+    [about setBackgroundColor:[UIColor clearColor]];
+    [about sizeToFit];
+    [self.DetailscrollView addSubview:about];
+    
+    
+    CGFloat height = about.frame.size.height + title.frame.size.height + 200;
+   
+    self.DetailscrollView.contentSize = CGSizeMake(320.0f, height);
+
+}
+
+-(void) drawResumeView:(NSArray *)content{
+    //set title
+    UILabel *title =[[UILabel alloc] initWithFrame:CGRectMake(30.0f, 50.0f, 100.0f, 50.0f)];
+    title.text = @"關於我";
+    title.numberOfLines =1;
+    [title setFont:[UIFont fontWithName:@"HoeflerText-Black" size:22]];
+    [title setTextColor:[UIColor colorWithRed:0/255.0 green:184/255.0 blue:200/255.0 alpha:1]];
+    [self.DetailscrollView addSubview:title];
+    [title setBackgroundColor:[UIColor clearColor]];
+    
+    CGFloat height = title.frame.size.height;
+    for( NSDictionary *unit in content){
+        
+    }
 
 }
 

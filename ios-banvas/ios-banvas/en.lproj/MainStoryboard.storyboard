@@ -90,10 +90,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wx1-Ar-7tq">
-                                <rect key="frame" x="79" y="283" width="55" height="44"/>
+                                <rect key="frame" x="20" y="283" width="135" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="好">
+                                <state key="normal" title="新增">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zR7-tz-D1h">
-                                <rect key="frame" x="189" y="283" width="55" height="44"/>
+                                <rect key="frame" x="165" y="283" width="135" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="取消">
@@ -130,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmQ-Rw-Ohq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="-218"/>
+            <point key="canvasLocation" x="1488" y="-218"/>
         </scene>
         <!--Navigation Controller - Category-->
         <scene sceneID="Ihq-G5-XGX">
@@ -171,7 +171,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="mgc-HK-5aA">
-                                            <rect key="frame" x="18" y="4" width="56" height="56"/>
+                                            <rect key="frame" x="20" y="3" width="60" height="60"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Cj-KD-rgG">
                                             <rect key="frame" x="93" y="9" width="91" height="24"/>
@@ -259,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4XI-lo-jDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="1272"/>
+            <point key="canvasLocation" x="629" y="1268"/>
         </scene>
         <!--Card View Controller-->
         <scene sceneID="9qi-Xp-xcz">
@@ -320,13 +320,6 @@
                                             <action selector="segmentDidChange:" destination="TYe-rS-Adb" eventType="valueChanged" id="FR1-WP-NRC"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qCp-tc-gOp">
-                                        <rect key="frame" x="130" y="128" width="120" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97647064924240112" green="0.97647064924240112" blue="0.97647064924240112" alpha="1" colorSpace="deviceRGB"/>
                             </scrollView>
@@ -344,12 +337,11 @@
                         <outlet property="picture" destination="iGu-cz-UV7" id="8qA-wd-qie"/>
                         <outlet property="position" destination="o04-3G-GkM" id="ZIb-4B-zqe"/>
                         <outlet property="segmentedControl" destination="snJ-Qe-4OA" id="4YU-oE-mQA"/>
-                        <outlet property="test" destination="qCp-tc-gOp" id="dGg-VL-50n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkt-FI-JfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="512"/>
+            <point key="canvasLocation" x="1494" y="496"/>
         </scene>
     </scenes>
     <resources>
