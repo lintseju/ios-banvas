@@ -108,6 +108,7 @@
     [self cleanDetailView];
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
+        {
             for (UIView *view in [self.DetailscrollView subviews])
             {
                 if ( ![view isKindOfClass:[UISegmentedControl class]])
@@ -115,21 +116,30 @@
             }
             NSString* content = [PersonInfo valueForKey:@"about_me"];
             [self drawAboutView:content];
-            break;
+        }
+        break;
+        
         case 1:
-//            NSString* content = [PersonInfo valueForKey:@"about_me"];
+        {
+           NSString* content = [PersonInfo valueForKey:@"about_me"];
             NSLog(@"TT");
-            break;
+            
+        }
+        break;
+        
         case 2:
+        {
 //            NSString* content = [PersonInfo valueForKey:@"about_me"];
             NSLog(@"TT");
-            break;
-        case 3:
+            
+        }
+        break;
+        case 3:{
 //            NSString* content = [PersonInfo valueForKey:@"about_me"];
             NSLog(@"TT");
-            break;
-        default:
-            break;
+        }break;
+        default:{
+            }break;
     }
     self.test.text = [NSString stringWithFormat:@"%d", self.segmentedControl.selectedSegmentIndex];
 }
