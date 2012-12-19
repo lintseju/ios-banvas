@@ -33,6 +33,11 @@
     self.supportedOrientationsMask = ZBarOrientationMaskAll;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[BADataSource data] createPersonByPersonID:@"1"];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

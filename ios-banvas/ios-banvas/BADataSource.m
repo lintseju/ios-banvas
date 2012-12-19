@@ -280,6 +280,20 @@ static NSArray *rgba;
 {
     NSUInteger index;
     NSMutableDictionary *personToUpdate;
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:dbFileName ofType:dbFileType];
+    NSString *dbString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSArray *tmpArray = [dbString mutableObjectFromJSONString];
+    if(tmpArray == nil)
+        NSLog(@"Read %@.%@ error!!!", dbFileName, dbFileType);
+    //check activity
+    for(NSDictionary *obj in tmpArray){
+        if([[obj valueForKey:@"id"] isEqualToString:personID]){
+            [dbFileArray addObject:obj];
+        }
+    }
+
+    
     for(NSMutableDictionary *person in dbFileArray){
         if([[person valueForKey:@"id"] isEqualToString:personID]){
             index = [dbFileArray indexOfObject:person];
@@ -326,14 +340,15 @@ static NSArray *rgba;
     }
     [personToUpdate setObject:@"n" forKey:@"active"];
     [dbFileArray removeObjectAtIndex:index];
-    [dbFileArray addObject:personToUpdate];
+//    [dbFileArray addObject:personToUpdate];
     [self refresh];
+    //NSLog(@"%@", dbFileArray);
     return YES;
 }
 
 -(NSDictionary*) readPersonByPersonID:(NSString*) personID
 {
-    NSString *statusURL = [NSString stringWithFormat:@"%@/%@/status", URLString, personID];
+    /*NSString *statusURL = [NSString stringWithFormat:@"%@/%@/status", URLString, personID];
     NSString *statusMsg = nil;//[NSString stringWithFormat:@"{\"token\"=\"%@\"}", token];
     NSDictionary *serverMsg = [BADataSource getRequestStringFromURL:statusURL withContent:statusMsg withMethod:@"POST" withEncoding:NSUTF8StringEncoding];
     if([serverMsg valueForKey:@"err"] != 0){
@@ -341,7 +356,14 @@ static NSArray *rgba;
         return nil;
     }
     NSDictionary *returnData = [serverMsg valueForKey:@"data"];
-    return returnData;
+    return returnData;*/
+    for(NSDictionary *obj in dbFileArray){
+        if([[obj valueForKey:@"id"] isEqualToString:personID]){
+            [self refresh];
+            return obj;
+        }
+    }
+    return nil;
 }
 
 @end

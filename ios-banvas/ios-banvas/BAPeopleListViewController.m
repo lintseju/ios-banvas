@@ -70,8 +70,16 @@
             listArray = [[BADataSource data] getPersonList];
         }
         cellInfo = [listArray objectAtIndex:listIdx];
+//        NSLog(@"%d XD", [listArray count]);
         [[BADataSource data] deletePersonByPersonID:[cellInfo valueForKey:@"id"]];
-        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        [self.tableView reloadData];
+        if([self.navigationController.viewControllers indexOfObject:self] == 1){
+            listArray = [[BADataSource data] getPersonListByTag:self.displayName];
+        }else{
+            listArray = [[BADataSource data] getPersonList];
+        }
+//        NSLog(@"%d XD2", [listArray count]);
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -109,6 +117,8 @@
     if([[cellInfo valueForKey:@"pictureSmall"] length] != 0){
         NSString *path = [[NSBundle mainBundle] pathForResource:[cellInfo valueForKey:@"pictureSmall"] ofType:pictureFileType];
         personCell.imageView.image = [UIImage imageWithContentsOfFile:path];
+    }else{
+        personCell.imageView.image = nil;
     }
     return cell;
 }

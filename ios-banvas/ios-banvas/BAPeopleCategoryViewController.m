@@ -88,7 +88,9 @@ extern NSString *noneCategory;
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if(indexPath.section == 0)
+        return YES;
+    return NO;
 }
 
 // Override to support editing the table view.
@@ -96,7 +98,9 @@ extern NSString *noneCategory;
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSArray *tagList = [[BADataSource data] getTagList];
+        [[BADataSource data] deleteCategory:[tagList objectAtIndex:indexPath.row]];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }/*
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
