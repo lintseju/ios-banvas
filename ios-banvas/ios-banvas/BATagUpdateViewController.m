@@ -74,6 +74,7 @@ static NSArray *colorList;
     }
     self.textInput.returnKeyType = UIReturnKeyDone;
     self.textInput.delegate = self;
+    self.colorSelect.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,7 +132,11 @@ static NSArray *colorList;
         return [[[BADataSource data] getTagList] objectAtIndex:row];
         //return [[BADataSource getTagList] objectAtIndex:row];
     }
+//    NSLog(@"%d", [pickerView selectedRowInComponent:0]);
+//    CIImage *selector = [[[CIImage alloc] initWithColor:(CIColor*)[BATagUpdateViewController getColorByIndex:component]]];
     return [colorList objectAtIndex:row];
 }
+
+//UIImage *X = [UIImage alloc]initWithFrame: CGRectMake(, , , , )
 
 @end

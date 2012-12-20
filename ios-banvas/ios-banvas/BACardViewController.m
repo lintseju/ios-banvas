@@ -71,13 +71,13 @@
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
     NSLog(@"Swipe received.");
     
-    if (recognizer.direction==UISwipeGestureRecognizerDirectionRight) {
+    if (recognizer.direction==UISwipeGestureRecognizerDirectionLeft) {
         if(self.segmentedControl.selectedSegmentIndex != 3){
             self.segmentedControl.selectedSegmentIndex++;
             [self updateSelectedSegmentLabel];
         }
     }
-    if (recognizer.direction==UISwipeGestureRecognizerDirectionLeft) {
+    if (recognizer.direction==UISwipeGestureRecognizerDirectionRight) {
         if(self.segmentedControl.selectedSegmentIndex != 0){
             self.segmentedControl.selectedSegmentIndex--;
             [self updateSelectedSegmentLabel];
@@ -271,9 +271,9 @@
     
     UIImage *telephone = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"telephone.png"]];
     telephone = [self reSizeImage:telephone toSize:CGSizeMake(32, 32)];
-    UIImage *facebook = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"facebook.png"]];
+    UIImage *facebook = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"mail.png"]];
     facebook = [self reSizeImage:facebook toSize:CGSizeMake(32, 32)];
-    UIImage *mail = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"mail.png"]];
+    UIImage *mail = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"facebook.png"]];
     mail = [self reSizeImage:mail toSize:CGSizeMake(32, 32)];
 //    UIImage *twi = [UIImage imageNamed:@"twitter"];
 //    twi = [self reSizeImage:telephone toSize:CGSizeMake(32, 32)];
