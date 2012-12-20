@@ -271,10 +271,10 @@
     
     UIImage *telephone = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"telephone.png"]];
     telephone = [self reSizeImage:telephone toSize:CGSizeMake(32, 32)];
-    
+
     UIImage *mail = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"mail.png"]];
     mail = [self reSizeImage:mail toSize:CGSizeMake(32, 32)];
-    
+        
     UIImage *facebook = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"facebook.png"]];
     facebook = [self reSizeImage:facebook toSize:CGSizeMake(32, 32)];
     
