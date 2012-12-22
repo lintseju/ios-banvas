@@ -42,8 +42,8 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 }
 
 +(BADataSource*) data;
-+(NSDictionary*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
 +(NSDictionary*) getRequestStringFromURL:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding;
++(NSString*) createHTTPBodyByDictionary:(NSDictionary*)dataDictionary;
 
 - (void)refresh;
 - (void)cleanCache;
@@ -57,7 +57,7 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 -(NSArray*) getTagList;
 
 //server side
--(Boolean) refreshData:(NSString*)data;
+-(Boolean) refreshDataToServer:(NSString*)data;
 -(Boolean) login:(NSString*)account andPassword:(NSString*)password;
 
 //For scan class

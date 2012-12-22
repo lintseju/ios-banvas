@@ -170,8 +170,11 @@ static NSArray *rgba;
 
 #pragma mark - ServerSide
 
--(Boolean) refreshData:(NSString*)data
+-(Boolean) refreshDataToServer:(NSString *)data
 {
+    if(token != nil){
+        
+    }
     return YES;
 }
 
@@ -199,9 +202,17 @@ static NSArray *rgba;
     return msgDic;
 }
 
-+(NSDictionary*) getRequestString:(NSString*)URLString withContent:(NSString*)content withMethod:(NSString*)method withEncoding:(NSStringEncoding)encoding
++(NSString*) createHTTPBodyByDictionary:(NSDictionary*)dataDictionary
 {
-    return [BADataSource getRequestStringFromURL:URLString withContent:content withMethod:method withEncoding:encoding];
+    NSEnumerator *keys = [dataDictionary keyEnumerator];
+    id key = [keys nextObject];
+    if(key == nil)
+        return nil;
+    NSString *outputString = [[NSString alloc] initWithFormat:@"%@=%@", key, [dataDictionary valueForKey:key]];
+    while((key = [keys nextObject])){
+        [outputString stringByAppendingFormat:@"&%@=%@", key, [dataDictionary valueForKey:key]];
+    }
+    return outputString;
 }
 
 -(Boolean) login:(NSString*)account andPassword:(NSString*)password
@@ -245,6 +256,20 @@ static NSArray *rgba;
 {
     NSUInteger index;
     NSMutableArray *tagArray = [configDic valueForKey:@"tag"];
+    //move people to none category
+    NSArray *peopleToUpdate = [self getPersonListByTag:categoryName];
+    /*if([peopleToUpdate count] > 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"刪除分類"
+                                                        message:@"刪除分類會將分類中的名片移動到未分類"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:@"Cancel", nil];
+        [alert show];
+    }*/
+    for(NSDictionary *person in peopleToUpdate){
+        [self updatePersonByPersonID:[person valueForKey:@"id"] andTag:noneCategory];
+    }
+    //find category to delete
     for(NSMutableDictionary *obj in tagArray){
         if([[obj valueForKey:@"name"] isEqualToString:categoryName]){
             index = [tagArray indexOfObject:obj];
