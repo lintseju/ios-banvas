@@ -38,7 +38,7 @@ extern NSString *noneCategory;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //NSLog(@"%@",[BADataSource getRequestStringFromURL:@"http://banvas-dev.herokuapp.com/lintseju/status" withContent:@"" withMethod:@"POST" withEncoding:NSUTF8StringEncoding]);
-    [[BADataSource data] login:@"ddmail2009@gmail.com" andPassword:@"asd"];
+    [[BADataSource data] login:@"r01922004@csie.ntu.edu.tw" andPassword:@"123"];
 }
 
 -(void) viewDidAppear:(BOOL)animated
