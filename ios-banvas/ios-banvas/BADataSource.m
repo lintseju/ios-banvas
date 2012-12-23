@@ -170,12 +170,64 @@ static NSArray *rgba;
 
 #pragma mark - ServerSide
 
--(Boolean) refreshDataToServer:(NSString *)data
+-(Boolean) getAllDataFromServer
 {
-    if(token != nil){
+    NSDictionary *listData = [[BADataSource data] updateDataWithServer:@"personList" withParameter:nil];
+    NSArray *list = [listData valueForKey:@"data"];
+//    NSLog(@"%@", list);
+    for(NSDictionary *personData in list){
         
     }
+    if(listData == nil){
+        NSLog(@"listData is nil in getAllDataFromServer.");
+        return NO;
+    }
     return YES;
+}
+
+-(NSDictionary*) updateDataWithServer:(NSString*)data withParameter:(NSArray*)parameter
+{
+    NSString *url;
+    NSMutableString *contentToServer = [NSMutableString stringWithFormat:@"token=%@", token];
+    NSDictionary *serverData;
+    if(token != nil){
+        if([data isEqualToString:@"personList"]){
+            url = [NSMutableString stringWithFormat:@"%@/%@/ios/status", URLString, userID];
+        }else if([data isEqualToString:@"readPerson"]){
+            NSString *personID = [parameter objectAtIndex:0];
+            url = [NSString stringWithFormat:@"%@/%@/ios/detail", URLString, personID];
+        }else if([data isEqualToString:@"createPerson"]){
+            NSString *personID = [parameter objectAtIndex:0];
+            url = [NSString stringWithFormat:@"%@/%@/collect/save", URLString, userID];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&tag=%@", personID, noneCategory];
+        }else if([data isEqualToString:@"addCategory"]){
+            NSString *tagName = [parameter objectAtIndex:0];
+            url = [NSString stringWithFormat:@"%@/add_tag", URLString];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&tag=%@", tagName];
+        }else if([data isEqualToString:@"updatePerson"]){
+            NSString *personID = [parameter objectAtIndex:0];
+            NSString *newTag = [parameter objectAtIndex:0];
+            url = [NSString stringWithFormat:@"%@/%@/update_tag", URLString, personID];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&tag=%@", personID, newTag];
+        }else if([data isEqualToString:@"deleteCategory"]){
+            NSString *tagName = [parameter objectAtIndex:0];
+            url = [NSString stringWithFormat:@"%@/add_tag", URLString];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&tag=%@", tagName];
+        }else if([data isEqualToString:@"deletePerson"]){
+            NSString *personID = [parameter objectAtIndex:0];
+            url = [NSString stringWithFormat:@"%@/%@/collect/delete", URLString, personID];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@", personID];
+        }else{
+            NSLog(@"Unknown data %@ with parameter %@ to read.", data, parameter);
+            return nil;
+        }
+//        NSLog(@"Data from server is:%@", serverData);
+        serverData = [BADataSource getRequestStringFromURL:url withContent:contentToServer withMethod:@"POST" withEncoding:NSUTF8StringEncoding];
+        if(serverData != nil)
+            return serverData;
+    }
+    NSLog(@"No token, unable to read %@ from server.", data);
+    return nil;
 }
 
 //URLString is like "http://xxx.xxx.xx.xxx"
@@ -190,7 +242,7 @@ static NSArray *rgba;
     [request setURL:url];
     [request setHTTPMethod:method];
     [request setHTTPBody:[content dataUsingEncoding:encoding]];
-    NSLog(@"request = %@", request);
+//    NSLog(@"content = %@", content);
     NSError *error = nil;
     NSURLResponse *response = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -398,5 +450,24 @@ static NSArray *rgba;
     }
     return nil;
 }
+
+//tesing
+/*-(Boolean) signupSample
+{
+    NSString *account = @"r01922004@csie.ntu.edu.tw";
+    NSString *password = @"123";
+    NSString *firstName = @"Tse-Ju";
+    NSString *lastName = @"Lin";
+    NSString *signup_id = @"lintseju";
+    NSString *signupURL = [NSString stringWithFormat:@"%@/signup", URLString];
+    NSString *signupMsg = [NSString stringWithFormat:@"email=%@&password=%@&first_name=%@&last_name=%@&id=%@", account, password, firstName, lastName, signup_id];
+    NSArray *serverMsg = [BADataSource getRequestStringFromURL:signupURL withContent:signupMsg withMethod:@"POST" withEncoding:NSUTF8StringEncoding];
+    //    NSLog(@"%@", [[serverMsg valueForKey:@"err"] class]);
+    if([[serverMsg valueForKey:@"err"] intValue] != 0){
+        NSLog(@"Error %@ occurred in login!", [serverMsg valueForKey:@"err"]);
+        return NO;
+    }
+    return YES;
+}*/
 
 @end

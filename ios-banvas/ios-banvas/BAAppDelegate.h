@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BADataSource.h"
 
 @interface BAAppDelegate : UIResponder <UIApplicationDelegate>
 
