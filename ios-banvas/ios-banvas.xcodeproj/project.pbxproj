@@ -64,6 +64,8 @@
 		DF9E5CD016827BD200530304 /* python.png in Resources */ = {isa = PBXBuildFile; fileRef = DF9E5CCF16827BD200530304 /* python.png */; };
 		DF9E5CD216827C3300530304 /* c++.png in Resources */ = {isa = PBXBuildFile; fileRef = DF9E5CD116827C3300530304 /* c++.png */; };
 		DF9E5CD616827FEF00530304 /* user.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF9E5CD516827FEF00530304 /* user.jpg */; };
+		DFF0765516899FAF00FE4F7B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF0765416899FAF00FE4F7B /* icon.png */; };
+		DFF076591689A8D900FE4F7B /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF076571689A02800FE4F7B /* icon@2x.png */; };
 		DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1F416634B48001555BF /* BACardViewController.m */; };
 		DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1FA16635F39001555BF /* BATestCellViewController.m */; };
 		DFF1E20116637B59001555BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFF1E20016637B59001555BF /* QuartzCore.framework */; };
@@ -171,6 +173,8 @@
 		DF9E5CCF16827BD200530304 /* python.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = python.png; sourceTree = "<group>"; };
 		DF9E5CD116827C3300530304 /* c++.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "c++.png"; sourceTree = "<group>"; };
 		DF9E5CD516827FEF00530304 /* user.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = user.jpg; sourceTree = "<group>"; };
+		DFF0765416899FAF00FE4F7B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DFF076571689A02800FE4F7B /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		DFF1E1F316634B48001555BF /* BACardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACardViewController.h; sourceTree = "<group>"; };
 		DFF1E1F416634B48001555BF /* BACardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACardViewController.m; sourceTree = "<group>"; };
 		DFF1E1F916635F39001555BF /* BATestCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATestCellViewController.h; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 		CE628343165F9E4D00BD975E = {
 			isa = PBXGroup;
 			children = (
+				DFF076571689A02800FE4F7B /* icon@2x.png */,
+				DFF0765416899FAF00FE4F7B /* icon.png */,
 				DFF1E1F816635F19001555BF /* For test */,
 				CE628358165F9E4D00BD975E /* ios-banvas */,
 				CE628387165F9E4E00BD975E /* ios-banvasTests */,
@@ -608,6 +614,8 @@
 				DF9E5CD616827FEF00530304 /* user.jpg in Resources */,
 				CEDE2D7816829ECF0027F45B /* javascript@2x.png in Resources */,
 				9E0E70091686080400BF8759 /* FacebookSDKResources.bundle in Resources */,
+				DFF0765516899FAF00FE4F7B /* icon.png in Resources */,
+				DFF076591689A8D900FE4F7B /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

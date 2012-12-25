@@ -347,56 +347,6 @@
     <resources>
         <image name="head.png" width="320" height="180"/>
     </resources>
-    <classes>
-        <class className="BACardViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BACardViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="DetailscrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="company" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="department" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="picture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="position" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="BAPeopleCategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleCategoryViewController.h"/>
-        </class>
-        <class className="BAPeopleListViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleListViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="coloredTag" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thumbnailView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BAPeopleListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAPeopleListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="reTagButtonTapped:"/>
-                <relationship kind="outlet" name="reTagButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="BAScannerViewController" superclassName="ZBarReaderViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAScannerViewController.h"/>
-        </class>
-        <class className="BATagUpdateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BATagUpdateViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonTouched:"/>
-                <relationship kind="outlet" name="colorSelect" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="textInput" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SDSegmentedControl" superclassName="UISegmentedControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SDSegmentedControl.h"/>
-        </class>
-        <class className="ZBarReaderViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZBarReaderViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
