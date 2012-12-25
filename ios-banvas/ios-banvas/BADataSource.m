@@ -173,11 +173,8 @@ static NSArray *rgba;
 -(Boolean) getAllDataFromServer
 {
     NSDictionary *listData = [[BADataSource data] updateDataWithServer:@"personList" withParameter:nil];
-    NSArray *list = [listData valueForKey:@"data"];
+    dbFileArray = [[NSMutableArray alloc] initWithArray:[listData valueForKey:@"data"]];
 //    NSLog(@"%@", list);
-    for(NSDictionary *personData in list){
-        
-    }
     if(listData == nil){
         NSLog(@"listData is nil in getAllDataFromServer.");
         return NO;
