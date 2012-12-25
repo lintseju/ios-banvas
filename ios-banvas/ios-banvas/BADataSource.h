@@ -57,7 +57,8 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 -(NSArray*) getTagList;
 
 //server side
--(Boolean) refreshDataToServer:(NSString*)data;
+-(Boolean) getAllDataFromServer;
+-(NSDictionary*) updateDataWithServer:(NSString*)data withParameter:(NSArray*)parameter;
 -(Boolean) login:(NSString*)account andPassword:(NSString*)password;
 
 //For scan class
@@ -71,5 +72,8 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 -(Boolean) updatePersonByPersonID:(NSString*) personID andTag:(NSString*)tag;
 -(Boolean) deletePersonByPersonID:(NSString*) personID;
 -(NSDictionary*) readPersonByPersonID:(NSString*) personID;
+
+//for testing
+//-(Boolean) signupSample;
 
 @end
