@@ -76,5 +76,6 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 //for testing
 //-(Boolean) signupSample;
 -(void) loginAlert;
+-(Boolean) isLogin;
 
 @end

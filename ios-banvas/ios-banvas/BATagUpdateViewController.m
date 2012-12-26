@@ -86,6 +86,8 @@ static NSArray *colorList;
 - (void)viewDidUnload {
     [self setTextInput:nil];
     [self setColorSelect:nil];
+    [self setButtonNew:nil];
+    [self setButtonCancel:nil];
     [super viewDidUnload];
 }
 

@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *colorSelect;
 @property (strong, nonatomic) NSString *personName;
 @property (strong, nonatomic) NSString *personID;
+@property (strong, nonatomic) IBOutlet UIButton *buttonNew;
+@property (strong, nonatomic) IBOutlet UIButton *buttonCancel;
 
 + (UIColor*)getColorByIndex:(NSInteger)colorListIndex;
 

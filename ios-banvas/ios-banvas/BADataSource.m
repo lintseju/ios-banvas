@@ -218,7 +218,7 @@ static dispatch_queue_t network_queue;
         NSLog(@"listData is nil in getAllDataFromServer.");
         return NO;
     }
-//    NSLog(@"%@", dbFileArray);
+    NSLog(@"%@", dbFileArray);
 //    NSLog(@"%@", configDic);
     [self refresh];
     return YES;
@@ -577,6 +577,13 @@ static dispatch_queue_t network_queue;
         [[BADataSource data] getAllDataFromServer];
         
     }
+}
+
+-(Boolean) isLogin
+{
+    if(userID)
+        return YES;
+    return NO;
 }
 
 @end
