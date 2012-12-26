@@ -149,6 +149,7 @@ static dispatch_queue_t network_queue;
                 color = [[UIColor alloc] initWithRed:r green:g blue:b alpha:a];
             }
         }
+//        NSLog(@"%@", color);
         [cache setObject:color forKey:cacheKey];
     }
     return color;
@@ -178,6 +179,12 @@ static dispatch_queue_t network_queue;
 {
     NSDictionary *listData = [[[BADataSource data] updateDataWithServer:@"personList" withParameter:nil] valueForKey:@"collection"];
     NSArray *keys = [listData allKeys];
+//    NSLog(@"%@", keys);
+    if(![keys containsObject:noneCategory]){
+        [self addCategory:noneCategory andColor:[UIColor blackColor]];
+        listData = [[[BADataSource data] updateDataWithServer:@"personList" withParameter:nil] valueForKey:@"collection"];
+        keys = [listData allKeys];
+    }
     NSArray *statusArray = [[self updateDataWithServer:@"readPersonStatus" withParameter:[NSArray arrayWithObject:userID]] valueForKey:@"data"];
     NSMutableArray *tagArray = [[NSMutableArray alloc] init];
     configDic = [[NSMutableDictionary alloc] init];
@@ -239,19 +246,18 @@ static dispatch_queue_t network_queue;
         }else if([data isEqualToString:@"updatePerson"]){
             NSString *personID = [parameter objectAtIndex:0];
             NSString *newTag = [parameter objectAtIndex:1];
-            NSDictionary *personInfo = [self getPersonInfo:personID];
-            url = [NSString stringWithFormat:@"%@/%@/move", URLString, personID];
-            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&to=%@&from=%@", personID, newTag, [personInfo valueForKey:@"tag"]];
+            NSString *oldTag = [parameter objectAtIndex:2];
+            url = [NSString stringWithFormat:@"%@/%@/collect/move", URLString, userID];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&to=%@&from=%@", personID, newTag, oldTag];
         }else if([data isEqualToString:@"deleteCategory"]){
             NSString *tagName = [parameter objectAtIndex:0];
             url = [NSString stringWithFormat:@"%@/%@/collect/delete_empty", URLString, userID];
             contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&tag=%@", tagName];
         }else if([data isEqualToString:@"deletePerson"]){
             NSString *personID = [parameter objectAtIndex:0];
-            NSDictionary *personInfo = [self getPersonInfo:personID];
+            NSString *tag = [parameter objectAtIndex:1];
             url = [NSString stringWithFormat:@"%@/%@/collect/delete", URLString, userID];
-            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&tag=%@", personID, [personInfo valueForKey:@"tag"]];
-            NSLog(@"%@", contentToServer);
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&tag=%@", personID, tag];
         }else if([data isEqualToString:@"readPersonStatus"]){
             NSString *personID = [parameter objectAtIndex:0];
             url = [NSString stringWithFormat:@"%@/%@/ios/status", URLString, personID];
@@ -264,7 +270,7 @@ static dispatch_queue_t network_queue;
         if([[serverData valueForKey:@"err"] isEqualToNumber:@0])
             return serverData;
     }
-    NSLog(@"Error %@ occurred, when doing %@ to server.", [serverData valueForKey:@"err"], data);
+    NSLog(@"Error %@ occurred, when doing %@ to server with content %@.", [serverData valueForKey:@"err"], data, contentToServer);
     return nil;
 }
 
@@ -288,7 +294,7 @@ static dispatch_queue_t network_queue;
         NSLog(@"getRequestString response:%@ and error: %@", response, error);
     NSDictionary *msgDic = [[[NSString alloc] initWithData:data encoding:encoding] objectFromJSONString];
     if(msgDic == nil)
-        NSLog(@"Error reading msgDic as JSON format in getRequestString.");
+        NSLog(@"Error reading msgDic as JSON format in getRequestString %@.", [[NSString alloc] initWithData:data encoding:encoding]);
     return msgDic;
 }
 
@@ -361,10 +367,10 @@ static dispatch_queue_t network_queue;
     NSArray *peopleToUpdate = [self getPersonListByTag:categoryName];
 
     for(NSDictionary *person in peopleToUpdate){
-        [self updatePersonByPersonID:[person valueForKey:@"id"] andTag:noneCategory];
         dispatch_async(network_queue,^(void){
-            [[BADataSource data] updateDataWithServer:@"updatePerson" withParameter:[NSArray arrayWithObjects:categoryName, noneCategory, nil]];
+            [[BADataSource data] updateDataWithServer:@"updatePerson" withParameter:[NSArray arrayWithObjects:categoryName, noneCategory, [person valueForKey:@"id"], nil]];
         });
+        [self updatePersonByPersonID:[person valueForKey:@"id"] andTag:noneCategory];
     }
     //find category to delete
     for(NSMutableDictionary *obj in tagArray){
@@ -454,6 +460,7 @@ static dispatch_queue_t network_queue;
 {
     NSUInteger index;
     NSMutableDictionary *personWithNewTag;
+    NSDictionary *oldInfo = [self getPersonInfo:personID];
     for(NSMutableDictionary *person in dbFileArray){
         if([[person valueForKey:@"id"] isEqualToString:personID]){
             index = [dbFileArray indexOfObject:person];
@@ -467,7 +474,7 @@ static dispatch_queue_t network_queue;
     [self refresh];
     
     dispatch_async(network_queue,^(void){
-        [[BADataSource data] updateDataWithServer:@"updatePerson" withParameter:[NSArray arrayWithObjects:personID, tag, nil]];
+        [[BADataSource data] updateDataWithServer:@"updatePerson" withParameter:[NSArray arrayWithObjects:personID, tag, [oldInfo valueForKey:@"tag"], nil]];
     });
     
     return YES;
@@ -478,6 +485,7 @@ static dispatch_queue_t network_queue;
 {
     NSUInteger index;
     NSMutableDictionary *personToUpdate;
+    NSDictionary *oldInfo = [self getPersonInfo:personID];
     for(NSMutableDictionary *person in dbFileArray){
         if([[person valueForKey:@"id"] isEqualToString:personID]){
             index = [dbFileArray indexOfObject:person];
@@ -492,7 +500,7 @@ static dispatch_queue_t network_queue;
     //NSLog(@"%@", dbFileArray);
     
     dispatch_async(network_queue,^(void){
-        [[BADataSource data] updateDataWithServer:@"deletePerson" withParameter:[NSArray arrayWithObject:personID]];
+        [[BADataSource data] updateDataWithServer:@"deletePerson" withParameter:[NSArray arrayWithObjects:personID, [oldInfo valueForKey:@"tag"], nil]];
     });
     
     return YES;

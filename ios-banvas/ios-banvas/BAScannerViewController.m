@@ -50,14 +50,18 @@
 - (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info
 {
     id <NSFastEnumeration> syms = [info objectForKey: ZBarReaderControllerResults];
+    NSArray *parsedData = [NSArray alloc];
     for(ZBarSymbol *sym in syms){
         //check url
         //NSLog(@"%@", sym.data);
         //ckeck url
+        parsedData = [sym.data componentsSeparatedByString:@"/"];
+        NSLog(@"QQQQ");
+        NSLog(@"%@", [parsedData lastObject]);
+        [[BADataSource data] createPersonByPersonID:[parsedData lastObject]];
+        self.tabBarController.selectedIndex = 1;
         break;
     }
-    [[BADataSource data] createPersonByPersonID:@"1"];
-    self.tabBarController.selectedIndex = 1;
 }
 
 @end
