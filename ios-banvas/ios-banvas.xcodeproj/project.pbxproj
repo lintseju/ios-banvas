@@ -67,12 +67,12 @@
 		DFF0766A168B315600FE4F7B /* icon-scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF07668168B315600FE4F7B /* icon-scan@2x.png */; };
 		DFF0766D168B31D800FE4F7B /* icon-category.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF0766B168B31D800FE4F7B /* icon-category.png */; };
 		DFF0766E168B31D800FE4F7B /* icon-category@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF0766C168B31D800FE4F7B /* icon-category@2x.png */; };
-		DFF0767A168B737000FE4F7B /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF07679168B737000FE4F7B /* CustomNavigationBar.m */; };
 		DFF0767D168B743500FE4F7B /* navigationbar.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF0767B168B743500FE4F7B /* navigationbar.png */; };
 		DFF0767E168B743500FE4F7B /* navigationbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF0767C168B743500FE4F7B /* navigationbar@2x.png */; };
 		DFF07692168B920A00FE4F7B /* 1123L.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DFF07690168B920A00FE4F7B /* 1123L.jpg */; };
 		DFF07693168B920A00FE4F7B /* 1223S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DFF07691168B920A00FE4F7B /* 1223S.jpg */; };
 		DFF076A3168BB05200FE4F7B /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF076A2168BB05200FE4F7B /* FXLabel.m */; };
+		DFF076A6168BC60200FE4F7B /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF076A5168BC60100FE4F7B /* CustomNavigationBar.m */; };
 		DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1F416634B48001555BF /* BACardViewController.m */; };
 		DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1FA16635F39001555BF /* BATestCellViewController.m */; };
 		DFF1E20116637B59001555BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFF1E20016637B59001555BF /* QuartzCore.framework */; };
@@ -183,14 +183,14 @@
 		DFF07668168B315600FE4F7B /* icon-scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-scan@2x.png"; sourceTree = "<group>"; };
 		DFF0766B168B31D800FE4F7B /* icon-category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-category.png"; sourceTree = "<group>"; };
 		DFF0766C168B31D800FE4F7B /* icon-category@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-category@2x.png"; sourceTree = "<group>"; };
-		DFF07678168B737000FE4F7B /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavigationBar.h; path = "../../../../Desktop/dyang-NavigationBarWithShadow/NavigationBarWithShadowDemo/CustomNavigationBar.h"; sourceTree = "<group>"; };
-		DFF07679168B737000FE4F7B /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavigationBar.m; path = "../../../../Desktop/dyang-NavigationBarWithShadow/NavigationBarWithShadowDemo/CustomNavigationBar.m"; sourceTree = "<group>"; };
 		DFF0767B168B743500FE4F7B /* navigationbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationbar.png; sourceTree = "<group>"; };
 		DFF0767C168B743500FE4F7B /* navigationbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar@2x.png"; sourceTree = "<group>"; };
 		DFF07690168B920A00FE4F7B /* 1123L.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1123L.jpg; sourceTree = "<group>"; };
 		DFF07691168B920A00FE4F7B /* 1223S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1223S.jpg; sourceTree = "<group>"; };
 		DFF076A1168BB05200FE4F7B /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		DFF076A2168BB05200FE4F7B /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		DFF076A4168BC60100FE4F7B /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
+		DFF076A5168BC60100FE4F7B /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
 		DFF1E1F316634B48001555BF /* BACardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACardViewController.h; sourceTree = "<group>"; };
 		DFF1E1F416634B48001555BF /* BACardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACardViewController.m; sourceTree = "<group>"; };
 		DFF1E1F916635F39001555BF /* BATestCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATestCellViewController.h; sourceTree = "<group>"; };
@@ -487,10 +487,10 @@
 		DFF07677168B733300FE4F7B /* CustomNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				DFF076A4168BC60100FE4F7B /* CustomNavigationBar.h */,
+				DFF076A5168BC60100FE4F7B /* CustomNavigationBar.m */,
 				DFF0767B168B743500FE4F7B /* navigationbar.png */,
 				DFF0767C168B743500FE4F7B /* navigationbar@2x.png */,
-				DFF07678168B737000FE4F7B /* CustomNavigationBar.h */,
-				DFF07679168B737000FE4F7B /* CustomNavigationBar.m */,
 			);
 			name = CustomNavigationBar;
 			sourceTree = "<group>";
@@ -709,8 +709,8 @@
 				CEC6C5631679BF720064A634 /* BAScannerViewController.m in Sources */,
 				DFFD7AF21680EB1A0080EAED /* BADetailViewController.m in Sources */,
 				DFFD7B091681295C0080EAED /* SDSegmentedControl.m in Sources */,
-				DFF0767A168B737000FE4F7B /* CustomNavigationBar.m in Sources */,
 				DFF076A3168BB05200FE4F7B /* FXLabel.m in Sources */,
+				DFF076A6168BC60200FE4F7B /* CustomNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
