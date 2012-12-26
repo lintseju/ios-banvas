@@ -178,6 +178,7 @@ static dispatch_queue_t network_queue;
 {
     NSDictionary *listData = [[[BADataSource data] updateDataWithServer:@"personList" withParameter:nil] valueForKey:@"collection"];
     NSArray *keys = [listData allKeys];
+    NSArray *statusArray = [[self updateDataWithServer:@"readPersonStatus" withParameter:[NSArray arrayWithObject:userID]] valueForKey:@"data"];
     NSMutableArray *tagArray = [[NSMutableArray alloc] init];
     configDic = [[NSMutableDictionary alloc] init];
     dbFileArray = [[NSMutableArray alloc] init];
@@ -191,13 +192,21 @@ static dispatch_queue_t network_queue;
         [tmp setObject:@0 forKey:@"a"];
         [tagArray addObject:tmp];
         for(NSString *personID in peopleArray){
-            NSMutableDictionary *person = [[self updateDataWithServer:@"readPerson" withParameter:[NSArray arrayWithObject:personID]] valueForKey:@"data"];
-            [person addEntriesFromDictionary:[[self updateDataWithServer:@"readPersonStatus" withParameter:[NSArray arrayWithObject:personID]] valueForKey:@"data"]];
+            NSMutableDictionary *person;
+            for(NSDictionary *tmp2 in statusArray){
+                if([[tmp2 valueForKey:@"id"] isEqualToString:personID]){
+                    person = [[NSMutableDictionary alloc] initWithDictionary:tmp2];
+                    break;
+                }
+            }
+            [person addEntriesFromDictionary:[[self updateDataWithServer:@"readPerson" withParameter:[NSArray arrayWithObject:personID]] valueForKey:@"data"]];
+            
             [dbFileArray addObject:person];
         }
     }
     [configDic setObject:tagArray forKey:@"tag"];
 //    NSLog(@"%@", list);
+//    NSLog(@"%@", [[self updateDataWithServer:@"readPersonStatus" withParameter:[NSArray arrayWithObject:userID]] valueForKey:@"data"]);
     if(listData == nil){
         NSLog(@"listData is nil in getAllDataFromServer.");
         return NO;

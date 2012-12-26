@@ -57,9 +57,6 @@
         break;
     }
     [[BADataSource data] createPersonByPersonID:@"1"];
-    /*BACardViewController *card = [[BACardViewController alloc] init];
-    card.userId = @"1";
-    [self.navigationController pushViewController:card animated:YES];*/
     self.tabBarController.selectedIndex = 1;
 }
 
