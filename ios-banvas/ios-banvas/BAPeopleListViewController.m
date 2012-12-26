@@ -35,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
     isNormalMode[[self.navigationController.viewControllers indexOfObject:self]] = true;
     //if([self.navigationController.viewControllers indexOfObject:self] == 0)
         //self.navigationItem.rightBarButtonItem = nil;
@@ -116,9 +118,16 @@
     
     if([[cellInfo valueForKey:@"pictureSmall"] length] != 0){
         NSString *path = [[NSBundle mainBundle] pathForResource:[cellInfo valueForKey:@"pictureSmall"] ofType:pictureFileType];
-        personCell.imageView.image = [UIImage imageWithContentsOfFile:path];
+        //縮放圖片
+//        UIImage *pic = [UIImage imageWithContentsOfFile:path];
+//        UIGraphicsBeginImageContext(CGSizeMake(60.0, 60.0));
+//        [pic drawInRect:CGRectMake(0, 0, 60.0, 60.0)];
+//        UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+        
+        personCell.thumbnailView.image = [UIImage imageWithContentsOfFile:path];
     }else{
-        personCell.imageView.image = nil;
+        personCell.thumbnailView = nil;
     }
     return cell;
 }

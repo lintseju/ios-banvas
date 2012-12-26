@@ -20,8 +20,8 @@
     "phone_number":"0922190123",
     "fb":"lucien.leee",
     "twitter":"",
-    "picture": "369426_100000239887063_1678032759_n",
-    "pictureSmall":"369426_100000239887063_1678032759_q",
+    "picture": "1123L",
+    "pictureSmall":"1223S",
     "active":"y"
     
 },

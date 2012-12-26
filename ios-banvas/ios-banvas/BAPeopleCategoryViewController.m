@@ -29,6 +29,7 @@ extern NSString *noneCategory;
 {
     [super viewDidLoad];
     self.tabBarController.selectedIndex = 2;
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -62,6 +63,7 @@ extern NSString *noneCategory;
 {
     static NSString *CellIdentifier = @"categoryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier /*forIndexPath:indexPath*/];
+    [cell.textLabel setTextColor:[UIColor colorWithRed:95.0 / 255.0 green:167.0 / 255.0 blue:130.0 / 255.0 alpha:1.0]];
     
     // Configure the cell...
     int listIdx = indexPath.row;

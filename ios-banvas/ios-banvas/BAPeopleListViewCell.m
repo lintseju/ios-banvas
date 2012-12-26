@@ -15,6 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+//        [self.thumbnailView setCenter:CGPointMake(150.0, 30.0)];
     }
     return self;
 }
