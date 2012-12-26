@@ -296,6 +296,7 @@
                                 <rect key="frame" x="157" y="96" width="147" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.3435644805431366" green="0.60783094167709351" blue="0.55736523866653442" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o04-3G-GkM">
@@ -309,7 +310,7 @@
                                 <rect key="frame" x="157" y="118" width="147" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.3435644805431366" green="0.60783094167709351" blue="0.55736523866653442" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="wCf-21-d87">
@@ -363,6 +364,7 @@
         <class className="BACardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BACardViewController.h"/>
             <relationships>
+                <relationship kind="action" name="segmentDidChange:"/>
                 <relationship kind="outlet" name="DetailscrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="company" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="department" candidateClass="UILabel"/>

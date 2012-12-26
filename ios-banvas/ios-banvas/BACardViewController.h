@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXLabel.h"
 #import <QuartzCore/QuartzCore.h>
 #import "BADataSource.h"
 @interface BACardViewController : UIViewController <UIScrollViewDelegate>

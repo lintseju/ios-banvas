@@ -47,6 +47,9 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:pathName ofType:pictureFileType];
     self.picture.image = [UIImage imageWithContentsOfFile:path];
     
+    [self.picture.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+    [self.picture.layer setBorderWidth: 4.0];
+    
     //Detail view 設定
     self.DetailscrollView.contentSize = CGSizeMake(320.0f, 600.0f);
     self.DetailscrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light.png"]];
@@ -134,6 +137,7 @@
     
     //set title
     UILabel *title =[[UILabel alloc] initWithFrame:CGRectMake(30.0f, 50.0f, 100.0f, 50.0f)];
+
     title.text = @"關於我";
     title.numberOfLines =1;
     [title setFont:[UIFont fontWithName:@"HoeflerText-Black" size:22]];

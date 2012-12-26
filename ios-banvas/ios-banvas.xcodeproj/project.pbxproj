@@ -72,6 +72,7 @@
 		DFF0767E168B743500FE4F7B /* navigationbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DFF0767C168B743500FE4F7B /* navigationbar@2x.png */; };
 		DFF07692168B920A00FE4F7B /* 1123L.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DFF07690168B920A00FE4F7B /* 1123L.jpg */; };
 		DFF07693168B920A00FE4F7B /* 1223S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DFF07691168B920A00FE4F7B /* 1223S.jpg */; };
+		DFF076A3168BB05200FE4F7B /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF076A2168BB05200FE4F7B /* FXLabel.m */; };
 		DFF1E1F616634B48001555BF /* BACardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1F416634B48001555BF /* BACardViewController.m */; };
 		DFF1E1FB16635F39001555BF /* BATestCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF1E1FA16635F39001555BF /* BATestCellViewController.m */; };
 		DFF1E20116637B59001555BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFF1E20016637B59001555BF /* QuartzCore.framework */; };
@@ -188,6 +189,8 @@
 		DFF0767C168B743500FE4F7B /* navigationbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationbar@2x.png"; sourceTree = "<group>"; };
 		DFF07690168B920A00FE4F7B /* 1123L.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1123L.jpg; sourceTree = "<group>"; };
 		DFF07691168B920A00FE4F7B /* 1223S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1223S.jpg; sourceTree = "<group>"; };
+		DFF076A1168BB05200FE4F7B /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
+		DFF076A2168BB05200FE4F7B /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		DFF1E1F316634B48001555BF /* BACardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACardViewController.h; sourceTree = "<group>"; };
 		DFF1E1F416634B48001555BF /* BACardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACardViewController.m; sourceTree = "<group>"; };
 		DFF1E1F916635F39001555BF /* BATestCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATestCellViewController.h; sourceTree = "<group>"; };
@@ -284,6 +287,7 @@
 		CE628358165F9E4D00BD975E /* ios-banvas */ = {
 			isa = PBXGroup;
 			children = (
+				DFF076A0168BB05200FE4F7B /* FXLabel */,
 				DFF07677168B733300FE4F7B /* CustomNavigationBar */,
 				DF9E5CBC168248C100530304 /* icons */,
 				DFFD7B061681295C0080EAED /* SDSegmentedControl */,
@@ -489,6 +493,15 @@
 				DFF07679168B737000FE4F7B /* CustomNavigationBar.m */,
 			);
 			name = CustomNavigationBar;
+			sourceTree = "<group>";
+		};
+		DFF076A0168BB05200FE4F7B /* FXLabel */ = {
+			isa = PBXGroup;
+			children = (
+				DFF076A1168BB05200FE4F7B /* FXLabel.h */,
+				DFF076A2168BB05200FE4F7B /* FXLabel.m */,
+			);
+			path = FXLabel;
 			sourceTree = "<group>";
 		};
 		DFF1E1F0166340F4001555BF /* UIImages */ = {
@@ -697,6 +710,7 @@
 				DFFD7AF21680EB1A0080EAED /* BADetailViewController.m in Sources */,
 				DFFD7B091681295C0080EAED /* SDSegmentedControl.m in Sources */,
 				DFF0767A168B737000FE4F7B /* CustomNavigationBar.m in Sources */,
+				DFF076A3168BB05200FE4F7B /* FXLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
