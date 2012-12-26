@@ -33,7 +33,7 @@ static NSString *BADataSourceCacheKeyForPersonInID = @"BADataSource.Cache.Person
 static NSString *BADataSourceCacheKeyForPersonTag = @"BADataSource.Cache.Tag.%@";
 static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color";
 
-@interface BADataSource : NSObject{
+@interface BADataSource : NSObject<UIAlertViewDelegate, UITextFieldDelegate>{
     NSMutableArray* dbFileArray;
     NSMutableDictionary *configDic;
     NSCache* cache;
@@ -75,5 +75,6 @@ static NSString *BADataSourceCacheKeyForTagColor = @"BADataSource.Cache.%@.Color
 
 //for testing
 //-(Boolean) signupSample;
+-(void) loginAlert;
 
 @end

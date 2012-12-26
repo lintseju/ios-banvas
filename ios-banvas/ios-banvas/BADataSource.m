@@ -14,12 +14,16 @@
 static NSArray *arrayOfPersonInList;
 static NSArray *rgba;
 
+//queue for server
+static dispatch_queue_t network_queue;
+
 +(BADataSource*) data
 {
     static dispatch_once_t once;
     static BADataSource *data;
     dispatch_once(&once, ^ {
         data = [[self alloc] init];
+        network_queue = dispatch_queue_create("network_queue", DISPATCH_QUEUE_SERIAL);
     });
     return data;
 }
@@ -172,13 +176,35 @@ static NSArray *rgba;
 
 -(Boolean) getAllDataFromServer
 {
-    NSDictionary *listData = [[BADataSource data] updateDataWithServer:@"personList" withParameter:nil];
-    dbFileArray = [[NSMutableArray alloc] initWithArray:[listData valueForKey:@"data"]];
+    NSDictionary *listData = [[[BADataSource data] updateDataWithServer:@"personList" withParameter:nil] valueForKey:@"collection"];
+    NSArray *keys = [listData allKeys];
+    NSMutableArray *tagArray = [[NSMutableArray alloc] init];
+    configDic = [[NSMutableDictionary alloc] init];
+    dbFileArray = [[NSMutableArray alloc] init];
+    for(NSString *key in keys){
+        NSArray *peopleArray = [listData valueForKey:key];
+        NSMutableDictionary *tmp = [[NSMutableDictionary alloc] init];
+        [tmp setObject:key forKey:@"name"];
+        [tmp setObject:@0 forKey:@"r"];
+        [tmp setObject:@0 forKey:@"g"];
+        [tmp setObject:@0 forKey:@"b"];
+        [tmp setObject:@0 forKey:@"a"];
+        [tagArray addObject:tmp];
+        for(NSString *personID in peopleArray){
+            NSMutableDictionary *person = [[self updateDataWithServer:@"readPerson" withParameter:[NSArray arrayWithObject:personID]] valueForKey:@"data"];
+            [person addEntriesFromDictionary:[[self updateDataWithServer:@"readPersonStatus" withParameter:[NSArray arrayWithObject:personID]] valueForKey:@"data"]];
+            [dbFileArray addObject:person];
+        }
+    }
+    [configDic setObject:tagArray forKey:@"tag"];
 //    NSLog(@"%@", list);
     if(listData == nil){
         NSLog(@"listData is nil in getAllDataFromServer.");
         return NO;
     }
+//    NSLog(@"%@", dbFileArray);
+//    NSLog(@"%@", configDic);
+    [self refresh];
     return YES;
 }
 
@@ -189,7 +215,7 @@ static NSArray *rgba;
     NSDictionary *serverData;
     if(token != nil){
         if([data isEqualToString:@"personList"]){
-            url = [NSMutableString stringWithFormat:@"%@/%@/ios/status", URLString, userID];
+            url = [NSMutableString stringWithFormat:@"%@/%@/collect/list", URLString, userID];
         }else if([data isEqualToString:@"readPerson"]){
             NSString *personID = [parameter objectAtIndex:0];
             url = [NSString stringWithFormat:@"%@/%@/ios/detail", URLString, personID];
@@ -199,31 +225,37 @@ static NSArray *rgba;
             contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&tag=%@", personID, noneCategory];
         }else if([data isEqualToString:@"addCategory"]){
             NSString *tagName = [parameter objectAtIndex:0];
-            url = [NSString stringWithFormat:@"%@/add_tag", URLString];
+            url = [NSString stringWithFormat:@"%@/%@/collect/save_empty", URLString, userID];
             contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&tag=%@", tagName];
         }else if([data isEqualToString:@"updatePerson"]){
             NSString *personID = [parameter objectAtIndex:0];
-            NSString *newTag = [parameter objectAtIndex:0];
-            url = [NSString stringWithFormat:@"%@/%@/update_tag", URLString, personID];
-            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&tag=%@", personID, newTag];
+            NSString *newTag = [parameter objectAtIndex:1];
+            NSDictionary *personInfo = [self getPersonInfo:personID];
+            url = [NSString stringWithFormat:@"%@/%@/move", URLString, personID];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&to=%@&from=%@", personID, newTag, [personInfo valueForKey:@"tag"]];
         }else if([data isEqualToString:@"deleteCategory"]){
             NSString *tagName = [parameter objectAtIndex:0];
-            url = [NSString stringWithFormat:@"%@/add_tag", URLString];
+            url = [NSString stringWithFormat:@"%@/%@/collect/delete_empty", URLString, userID];
             contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&tag=%@", tagName];
         }else if([data isEqualToString:@"deletePerson"]){
             NSString *personID = [parameter objectAtIndex:0];
-            url = [NSString stringWithFormat:@"%@/%@/collect/delete", URLString, personID];
-            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@", personID];
+            NSDictionary *personInfo = [self getPersonInfo:personID];
+            url = [NSString stringWithFormat:@"%@/%@/collect/delete", URLString, userID];
+            contentToServer = (NSMutableString*)[contentToServer stringByAppendingFormat:@"&id=%@&tag=%@", personID, [personInfo valueForKey:@"tag"]];
+            NSLog(@"%@", contentToServer);
+        }else if([data isEqualToString:@"readPersonStatus"]){
+            NSString *personID = [parameter objectAtIndex:0];
+            url = [NSString stringWithFormat:@"%@/%@/ios/status", URLString, personID];
         }else{
             NSLog(@"Unknown data %@ with parameter %@ to read.", data, parameter);
             return nil;
         }
 //        NSLog(@"Data from server is:%@", serverData);
         serverData = [BADataSource getRequestStringFromURL:url withContent:contentToServer withMethod:@"POST" withEncoding:NSUTF8StringEncoding];
-        if(serverData != nil)
+        if([[serverData valueForKey:@"err"] isEqualToNumber:@0])
             return serverData;
     }
-    NSLog(@"No token, unable to read %@ from server.", data);
+    NSLog(@"Error %@ occurred, when doing %@ to server.", [serverData valueForKey:@"err"], data);
     return nil;
 }
 
@@ -290,12 +322,23 @@ static NSArray *rgba;
         [newTag setObject:tmp forKey:rgba[i]];
     }
     //future work: check name collision
+    NSArray *tagList = [self getTagList];
+    NSLog(@"%@", tagList);
+    for(NSString *tagNow in tagList){
+        if([tagNow isEqualToString:categoryName]){
+            NSLog(@"Cannot create category %@, already exist.", categoryName);
+            return NO;
+        }
+    }
     [newTag setObject:categoryName forKey:@"name"];
     [tag addObject:newTag];
     [configDic removeObjectForKey:@"tag"];
 //    NSLog(@"%@", [configDic JSONString]);
     [configDic setObject:tag forKey:@"tag"];
 //    NSLog(@"%@", [configDic JSONString]);
+    dispatch_async(network_queue,^(void){
+        [[BADataSource data] updateDataWithServer:@"addCategory" withParameter:[NSArray arrayWithObject:categoryName]];
+    });
 
     [self refresh];
     return YES;
@@ -303,20 +346,16 @@ static NSArray *rgba;
 
 -(Boolean) deleteCategory:(NSString*)categoryName
 {
-    NSUInteger index;
+    NSUInteger index = -1;
     NSMutableArray *tagArray = [configDic valueForKey:@"tag"];
     //move people to none category
     NSArray *peopleToUpdate = [self getPersonListByTag:categoryName];
-    /*if([peopleToUpdate count] > 0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"刪除分類"
-                                                        message:@"刪除分類會將分類中的名片移動到未分類"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:@"Cancel", nil];
-        [alert show];
-    }*/
+
     for(NSDictionary *person in peopleToUpdate){
         [self updatePersonByPersonID:[person valueForKey:@"id"] andTag:noneCategory];
+        dispatch_async(network_queue,^(void){
+            [[BADataSource data] updateDataWithServer:@"updatePerson" withParameter:[NSArray arrayWithObjects:categoryName, noneCategory, nil]];
+        });
     }
     //find category to delete
     for(NSMutableDictionary *obj in tagArray){
@@ -325,10 +364,17 @@ static NSArray *rgba;
             break;
         }
     }
+    if(index == -1){
+        NSLog(@"No such category %@ when deleting category.", categoryName);
+        return  NO;
+    }
     [tagArray removeObjectAtIndex:index];
 //    [configDic removeObjectForKey:@"tag"];
     [configDic setObject:tagArray forKey:@"tag"];
     [self refresh];
+    dispatch_async(network_queue,^(void){
+        [[BADataSource data] updateDataWithServer:@"deleteCategory" withParameter:[NSArray arrayWithObject:categoryName]];
+    });
     return YES;
 }
 
@@ -387,6 +433,11 @@ static NSArray *rgba;
     [dbFileArray removeObjectAtIndex:index];
     [dbFileArray addObject:personToUpdate];
     [self refresh];
+
+    dispatch_async(network_queue,^(void){
+        [[BADataSource data] updateDataWithServer:@"createPerson" withParameter:[NSArray arrayWithObject:personID]];
+    });
+    
     return YES;
 }
 
@@ -405,6 +456,11 @@ static NSArray *rgba;
     [dbFileArray removeObjectAtIndex:index];
     [dbFileArray addObject:personWithNewTag];
     [self refresh];
+    
+    dispatch_async(network_queue,^(void){
+        [[BADataSource data] updateDataWithServer:@"updatePerson" withParameter:[NSArray arrayWithObjects:personID, tag, nil]];
+    });
+    
     return YES;
 }
 
@@ -425,6 +481,11 @@ static NSArray *rgba;
 //    [dbFileArray addObject:personToUpdate];
     [self refresh];
     //NSLog(@"%@", dbFileArray);
+    
+    dispatch_async(network_queue,^(void){
+        [[BADataSource data] updateDataWithServer:@"deletePerson" withParameter:[NSArray arrayWithObject:personID]];
+    });
+    
     return YES;
 }
 
@@ -442,6 +503,11 @@ static NSArray *rgba;
     for(NSDictionary *obj in dbFileArray){
         if([[obj valueForKey:@"id"] isEqualToString:personID]){
             [self refresh];
+            
+            dispatch_async(network_queue,^(void){
+                [[BADataSource data] updateDataWithServer:@"readPerson" withParameter:[NSArray arrayWithObject:personID]];
+            });
+            
             return obj;
         }
     }
@@ -466,5 +532,34 @@ static NSArray *rgba;
     }
     return YES;
 }*/
+
+-(void) loginAlert
+{
+    UIAlertView *loginAlertView = [[UIAlertView alloc]initWithTitle:@"Login" message:@"Enter email and password to login or pass." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    loginAlertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+    UITextField *emailField = [loginAlertView textFieldAtIndex:0];
+    UITextField *passwordField = [loginAlertView textFieldAtIndex:1];
+    emailField.text = @"r01922004@csie.ntu.edu.tw";
+    passwordField.text = @"123";
+    [loginAlertView show];
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //login
+    if(buttonIndex == 1){
+        [[BADataSource data] login:[alertView textFieldAtIndex:0].text andPassword:[alertView textFieldAtIndex:1].text];
+        
+        //NSLog(@"%@", [[BADataSource data] updateDataWithServer:@"personList" withParameter:nil]);
+        //    [[BADataSource data] updateDataWithServer:@"addCategory" withParameter:[NSArray arrayWithObject:noneCategory]];
+        //    [[BADataSource data] updateDataWithServer:@"createPerson" withParameter:[NSArray arrayWithObject:@"wallywei"]];
+        //    NSLog(@"%@", [[BADataSource data] updateDataWithServer:@"personList" withParameter:nil]);
+        //    [[BADataSource data] updateDataWithServer:@"deletePerson" withParameter:[NSArray arrayWithObject:@"123456"]];
+        //    NSLog(@"%@", [[BADataSource data] updateDataWithServer:@"readPerson" withParameter:[NSArray arrayWithObject:@"123456"]]);
+        
+        [[BADataSource data] getAllDataFromServer];
+        
+    }
+}
 
 @end

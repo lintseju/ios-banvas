@@ -13,13 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[BADataSource data] login:@"r01922004@csie.ntu.edu.tw" andPassword:@"123"];
-    //NSLog(@"%@", [[BADataSource data] updateDataWithServer:@"personList" withParameter:nil]);
-    [[BADataSource data] updateDataWithServer:@"createPerson" withParameter:[NSArray arrayWithObject:@"KD"]];
-    [[BADataSource data] updateDataWithServer:@"personList" withParameter:nil];
-//    [[BADataSource data] updateDataWithServer:@"deletePerson" withParameter:[NSArray arrayWithObject:@"KD"]];
-//    NSLog(@"%@", [[BADataSource data] updateDataWithServer:@"readPerson" withParameter:[NSArray arrayWithObject:@"KD"]]);
-    [[BADataSource data] getAllDataFromServer];
+    [[BADataSource data] loginAlert];
     return YES;
 }
 							
