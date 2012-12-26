@@ -136,7 +136,7 @@
         <scene sceneID="Ihq-G5-XGX">
             <objects>
                 <navigationController definesPresentationContext="YES" id="md0-dM-c1b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Category" id="3xg-oJ-wmL"/>
+                    <tabBarItem key="tabBarItem" title="Category" image="icon-category.png" id="3xg-oJ-wmL"/>
                     <navigationItem key="navigationItem" id="EgH-To-LXf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ER-nY-h6b">
                         <autoresizingMask key="autoresizingMask"/>
@@ -216,7 +216,7 @@
         <scene sceneID="BLx-eM-emY">
             <objects>
                 <navigationController definesPresentationContext="YES" id="166-iJ-csL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="IM3-I7-f9X"/>
+                    <tabBarItem key="tabBarItem" title="List" image="icon-list.png" id="IM3-I7-f9X"/>
                     <navigationItem key="navigationItem" id="7aK-4n-Vfg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="34d-XU-RJT">
                         <autoresizingMask key="autoresizingMask"/>
@@ -233,7 +233,7 @@
         <scene sceneID="8s2-71-tZA">
             <objects>
                 <navigationController definesPresentationContext="YES" id="s5S-Tt-jBd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scanner" id="keM-Gf-gKv"/>
+                    <tabBarItem key="tabBarItem" title="Scanner" image="icon-scan.png" id="keM-Gf-gKv"/>
                     <navigationItem key="navigationItem" id="xoN-8o-Yuo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d8H-Od-Bv6">
                         <autoresizingMask key="autoresizingMask"/>
@@ -346,12 +346,14 @@
     </scenes>
     <resources>
         <image name="head.png" width="320" height="180"/>
+        <image name="icon-category.png" width="30" height="30"/>
+        <image name="icon-list.png" width="30" height="30"/>
+        <image name="icon-scan.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="BACardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BACardViewController.h"/>
             <relationships>
-                <relationship kind="action" name="segmentDidChange:"/>
                 <relationship kind="outlet" name="DetailscrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="company" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="department" candidateClass="UILabel"/>
