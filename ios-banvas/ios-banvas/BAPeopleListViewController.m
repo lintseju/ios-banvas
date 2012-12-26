@@ -111,7 +111,7 @@
     cellInfo = [listArray objectAtIndex:listIdx];
     [personCell.coloredTag setBackgroundColor:[[BADataSource data] getColorOfTag:[cellInfo valueForKey:@"tag"]]];
     personCell.nameLabel.text = [cellInfo valueForKey:@"name"];
-    personCell.descriptionLabel.text = [cellInfo valueForKey:@"company"];
+    personCell.descriptionLabel.text = [cellInfo valueForKey:@"tag"];
     personCell.personID = [cellInfo valueForKey:@"id"];
     
     if([[cellInfo valueForKey:@"pictureSmall"] length] != 0){

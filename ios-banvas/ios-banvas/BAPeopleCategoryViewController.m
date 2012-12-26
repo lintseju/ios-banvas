@@ -28,6 +28,7 @@ extern NSString *noneCategory;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tabBarController.selectedIndex = 2;
 }
 
 -(void) viewDidAppear:(BOOL)animated
